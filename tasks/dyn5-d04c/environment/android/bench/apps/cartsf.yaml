@@ -1,0 +1,14 @@
+# CartSF (Instacart-style grocery delivery, debug build): offline, generated catalogue, one Room SQLite file.
+# Source: ~/Downloads/drizz-grocery-app (README).
+id: cartsf
+name: CartSF
+package: dev.drizz.cartsf
+description: Offline grocery-delivery app (Instacart-like), San Francisco, five stores. Signed in as demo.user@cartsf.test.
+apk: ~/Downloads/drizz-grocery-app/prebuilt/cartsf-debug.apk
+launch_activity: dev.drizz.cartsf.MainActivity
+launch_wait_s: 6
+
+state:
+  sqlite:
+    db: databases/cartsf.db
+    diff_exclude: [audit_log]

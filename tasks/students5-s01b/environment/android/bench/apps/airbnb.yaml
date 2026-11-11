@@ -1,0 +1,15 @@
+# Airbnb Clone (debug build): offline stays/experiences app, raw SQLite. US world for the cross-app tasks.
+# Source: ../drizz-airbnb-app (database/seed.py -> database/airbnb_us.db). A pushed db signs in its bench_session user.
+id: airbnb
+name: Airbnb Clone
+package: dev.drizz.airbnb
+description: Offline Airbnb-like app (homes, experiences, services). Seeds come signed in as Alex Morgan; prices in USD.
+apk: ../../drizz-airbnb-app/app/build/outputs/apk/debug/app-debug.apk   # installed when missing / --reinstall
+launch_activity: dev.drizz.airbnb.MainActivity
+launch_wait_s: 7
+
+state:
+  sqlite:
+    db: databases/airbnb.db
+    seeds_dir: ../../drizz-airbnb-app/database
+    diff_exclude: [recently_viewed]

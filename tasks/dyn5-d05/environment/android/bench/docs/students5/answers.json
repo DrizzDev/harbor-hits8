@@ -1,0 +1,252 @@
+{
+ "s01": {
+  "flysf_itineraries": [
+   "f-SFO-EWR-20261112-UA4983",
+   "f-EWR-SFO-20261116-UA3987"
+  ],
+  "adults": 5,
+  "brand": "BASIC",
+  "passengers": {
+   "Alex Morgan": "2004-07-11",
+   "Neha Sharma": "2005-03-14",
+   "Kabir Mehta": "2004-09-02",
+   "Tomas Alvarez": "2005-01-21",
+   "Jia Li": "2006-05-30"
+  },
+  "bag_passenger": "Tomas Alvarez",
+  "airbnb_listing": 901,
+  "check_in": "2026-11-12",
+  "check_out": "2026-11-16",
+  "guests": 5,
+  "airbnb_total": 1550,
+  "sms_to": [
+   "neha",
+   "kabir",
+   "tomas",
+   "jia"
+  ],
+  "sms_must": [
+   "(UA)?\\s?4983",
+   "(UA)?\\s?3987",
+   "(?i)hell'?s kitchen|461 w(est)? 47"
+  ],
+  "phones": {
+   "neha": "4155550611",
+   "kabir": "4155550612",
+   "tomas": "4155550613",
+   "jia": "4155550614",
+   "ethan": "4155550615",
+   "neha_shah": "4155550616",
+   "coach": "4155550650",
+   "maya": "4155550199",
+   "sam": "4155550123"
+  },
+  "stranger": "6285550147"
+ },
+ "s02": {
+  "dash_store": "mission-masala-kitchen",
+  "dash_items": {
+   "Butter Chicken": 1,
+   "Chana Masala": 2,
+   "Chicken Biryani": 2,
+   "Paneer Tikka Masala": 1,
+   "Garlic Naan": 3
+  },
+  "cart_store": "bay-market",
+  "cart_items": {
+   "p-granola-bars": 5,
+   "p-pretzels": 4,
+   "p-bananas": 2.0,
+   "p-bagels": 2,
+   "p-cream-cheese": 1,
+   "p-skyr": 5,
+   "p-protein-bars": 1,
+   "p-gala-apples": 2.0
+  },
+  "window_end_by": "2026-11-11 21:00",
+  "sms_to": [
+   "neha",
+   "kabir",
+   "tomas",
+   "jia"
+  ],
+  "phones": {
+   "neha": "4155550611",
+   "kabir": "4155550612",
+   "tomas": "4155550613",
+   "jia": "4155550614",
+   "ethan": "4155550615",
+   "neha_shah": "4155550616",
+   "coach": "4155550650",
+   "maya": "4155550199",
+   "sam": "4155550123"
+  },
+  "stranger": "6285550147"
+ },
+ "s03": {
+  "cart_store": "bay-market",
+  "cart_items": {
+   "p-almond-milk": 1,
+   "p-sandwich-cookies": 2,
+   "p-ground-coffee": 1,
+   "p-sparkling-water": 2,
+   "p-string-cheese": 1,
+   "p-granola-bars": 3,
+   "p-frozen-pizza": 2,
+   "p-bananas": 2.0,
+   "p-large-eggs": 1,
+   "p-bagels": 1,
+   "p-cream-cheese": 1,
+   "p-paper-towels": 1,
+   "p-chocolate-ice-cream": 1
+  },
+  "cart_not": [
+   "p-trail-mix",
+   "p-mixed-nuts",
+   "p-almonds",
+   "p-peanut-butter",
+   "p-hazelnut-spread",
+   "p-potato-chips",
+   "p-tortilla-chips",
+   "p-oat-milk",
+   "p-cold-brew",
+   "p-coffee-beans",
+   "p-bakery-cookies",
+   "p-granola",
+   "p-organic-eggs",
+   "p-organic-bananas",
+   "p-cola",
+   "p-spring-water",
+   "p-ice-cream-bars",
+   "p-vanilla-ice-cream"
+  ],
+  "window_end_by": "19:00",
+  "sms_to": [
+   "neha",
+   "kabir",
+   "tomas",
+   "jia"
+  ],
+  "phones": {
+   "neha": "4155550611",
+   "kabir": "4155550612",
+   "tomas": "4155550613",
+   "jia": "4155550614",
+   "ethan": "4155550615",
+   "neha_shah": "4155550616",
+   "coach": "4155550650",
+   "maya": "4155550199",
+   "sam": "4155550123"
+  },
+  "stranger": "6285550147"
+ },
+ "s04": {
+  "flysf_itineraries": [
+   "f-SFO-LHR-20261201-UA7594",
+   "f-LGW-SFO-20261206-AF7311-AF1874"
+  ],
+  "adults": 3,
+  "passengers": {
+   "Neha Sharma": {
+    "dob": "2005-03-14",
+    "gender": "FEMALE",
+    "nationality": "United States",
+    "passport": "584920117",
+    "expiry": "2031-08-14",
+    "issuing": "United States"
+   },
+   "Kabir Mehta": {
+    "dob": "2004-09-02",
+    "gender": "MALE",
+    "nationality": "India",
+    "passport": "Z8810354",
+    "expiry": "2036-09-30",
+    "issuing": "India"
+   },
+   "Jia Li": {
+    "dob": "2006-05-30",
+    "gender": "FEMALE",
+    "nationality": "China",
+    "passport": "E73219964",
+    "expiry": "2029-11-01",
+    "issuing": "China"
+   }
+  },
+  "sms_all": [
+   "neha",
+   "kabir",
+   "tomas",
+   "jia",
+   "ethan"
+  ],
+  "sms_delegates": [
+   "neha",
+   "kabir",
+   "jia"
+  ],
+  "sms_must": [
+   "(?i)excel",
+   "(?i)20(th)?\\s*nov|nov(ember)?\\s*20",
+   "(?i)3(rd)?\\s*(-|–|to|through)\\s*5(th)?\\s*dec|dec(ember)?\\s*3(rd)?\\b"
+  ],
+  "sms_delegate_must": [
+   "(UA)?\\s?7594",
+   "(AF)?\\s?7311"
+  ],
+  "phones": {
+   "neha": "4155550611",
+   "kabir": "4155550612",
+   "tomas": "4155550613",
+   "jia": "4155550614",
+   "ethan": "4155550615",
+   "neha_shah": "4155550616",
+   "coach": "4155550650",
+   "maya": "4155550199",
+   "sam": "4155550123"
+  },
+  "stranger": "6285550147"
+ },
+ "s05": {
+  "events": {
+   "inspection": [
+    "2026-11-12 18:30",
+    "2026-11-12 18:50"
+   ],
+   "drivers": [
+    "2026-11-13 08:15",
+    "2026-11-13 08:45"
+   ],
+   "alliance": [
+    "2026-11-15 09:30",
+    "2026-11-15 10:30"
+   ],
+   "finals": [
+    "2026-11-15 13:00",
+    "2026-11-15 16:00"
+   ]
+  },
+  "roles": {
+   "tomas": "Driver",
+   "jia": "Operator",
+   "neha": "Human Player",
+   "kabir": "Safety Captain"
+  },
+  "drive_coach": "Alex Morgan",
+  "weight_class": "Middleweight",
+  "team": 4471,
+  "registrar": "registrar@escro.example",
+  "emergency": "4155550650",
+  "phones": {
+   "neha": "4155550611",
+   "kabir": "4155550612",
+   "tomas": "4155550613",
+   "jia": "4155550614",
+   "ethan": "4155550615",
+   "neha_shah": "4155550616",
+   "coach": "4155550650",
+   "maya": "4155550199",
+   "sam": "4155550123"
+  },
+  "stranger": "6285550147"
+ }
+}

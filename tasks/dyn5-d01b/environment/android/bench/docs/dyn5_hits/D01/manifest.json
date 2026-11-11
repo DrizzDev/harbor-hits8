@@ -1,0 +1,40 @@
+{
+ "d01b": {
+  "dbs": {
+   "mailsf": "mailsf.db",
+   "calsf": "calsf.db",
+   "dashsf": "dashsf.db"
+  },
+  "files": [],
+  "cartsf": {
+   "sql": "\n    UPDATE orders SET status = 'DELIVERED', placedAt = placedAt - 345600000, deliveredAt = placedAt - 335000000,\n        windowStartMillis = windowStartMillis - 345600000, windowEndMillis = windowEndMillis - 345600000,\n        itemsFound = itemsTotal WHERE id = 'o-seed-live';\n    UPDATE order_items SET outcome = 'FOUND', finalCents = estimatedCents WHERE orderId = 'o-seed-live';\n    DELETE FROM replacement_requests WHERE orderId = 'o-seed-live';\n    UPDATE payment_methods SET holder = 'ALEX MORGAN';\n",
+   "stock": {
+    "bay-market": {
+     "p-russet-potatoes": true,
+     "p-half-and-half": true,
+     "p-garlic": true,
+     "p-sourdough": true,
+     "p-chicken-broth": true,
+     "p-yellow-onions": true,
+     "p-napkins": true,
+     "p-paper-towels": true,
+     "p-sparkling-water": true,
+     "p-honeycrisp-apples": true,
+     "p-vanilla-ice-cream": true,
+     "p-ground-coffee": true,
+     "p-ipa": true,
+     "p-oat-milk": true,
+     "p-sparkling-wine": true,
+     "p-gala-apples": true
+    }
+   }
+  },
+  "apps": [
+   "cartsf",
+   "dashsf",
+   "mailsf",
+   "calsf"
+  ],
+  "events": []
+ }
+}

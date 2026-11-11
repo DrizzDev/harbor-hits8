@@ -1,0 +1,162 @@
+note: 'Generated for reading: the original''s seed.yaml with this version''s texts. The task YAML and seed.py are
+  what the bench runs.'
+changes_from_original:
+  texts_removed:
+  - from: +1 415-555-0616
+    body: congrats on the summit thing!!
+  - from: +1 415-555-0650
+    body: Saw the GSRS email - great news. Book the three delegates by the pamphlet's rules, the grant only refunds
+      what they allow. And make sure the whole club hears about the poster hall.
+  texts_added:
+  - from: +1 415-555-0613
+    body: are we still meeting in the robotics lab tonight? 🤖
+  - from: +1 415-555-0616
+    body: congrats on the summit thing!! wish I'd actually joined the robotics club when you asked 😅
+  - from: +1 415-555-0650
+    body: Saw the GSRS email - great news. Book the three delegates by the pamphlet's rules, the grant only refunds
+      what they allow. And make sure the whole club hears about the poster hall. And text the three delegates their
+      flight numbers once they're booked.
+task: students5.s04d-london-summit-pamphlet
+persona:
+  name: Alex Morgan
+  home: 742 Valencia St, Apt 3, San Francisco CA 94110
+clock:
+  date: '2026-10-20'
+  time: 09:00
+  timezone: America/Los_Angeles
+device:
+  reset:
+    sms: true
+    contacts: true
+  contacts:
+  - name: Neha Sharma
+    phone: +1 415-555-0611
+  - name: Kabir Mehta
+    phone: +1 415-555-0612
+  - name: Tomas Alvarez
+    phone: +1 415-555-0613
+  - name: Jia Li
+    phone: +1 415-555-0614
+  - name: Ethan Brooks
+    phone: +1 415-555-0615
+  - name: Neha Shah
+    phone: +1 415-555-0616
+  - name: Dana Okafor
+    phone: +1 415-555-0650
+  - name: Maya Chen
+    phone: +1 415-555-0199
+  - name: Sam Reyes
+    phone: +1 415-555-0123
+  sms_in:
+  - from: +1 415-555-0611
+    body: 'omg London?? my passport: US, no. 584920117, expires 14 Aug 2031. DOB 14/03/2005'
+  - from: +1 415-555-0614
+    body: 'passport details for the summit: Chinese passport E73219964, valid until 1 Nov 2029, born 30 May 2006
+      🇬🇧✨'
+  - from: +1 415-555-0612
+    body: Indian passport Z4471902, expiry 10 Mar 2027, DOB 2 Sep 2004
+  - from: +1 415-555-0615
+    body: wait who's going to London? 👀
+  - from: +1 415-555-0612
+    body: 'update: just picked up my RENEWED passport 🎉 new no. Z8810354, expires 30 Sep 2036. use this one, the
+      old one''s cancelled'
+  - from: +1 415-555-0613
+    body: are we still meeting in the robotics lab tonight? 🤖
+  - from: +1 415-555-0616
+    body: congrats on the summit thing!! wish I'd actually joined the robotics club when you asked 😅
+  - from: +1 415-555-0650
+    body: Saw the GSRS email - great news. Book the three delegates by the pamphlet's rules, the grant only refunds
+      what they allow. And make sure the whole club hears about the poster hall. And text the three delegates their
+      flight numbers once they're booked.
+  files:
+  - src: fixtures/GSRS_2026_Delegate_Pamphlet.pdf
+    dest: /sdcard/Download/GSRS_2026_Delegate_Pamphlet.pdf
+    media_scan: true
+apps:
+  flysf:
+    package: dev.drizz.flysf
+    launch_activity: dev.drizz.flysf.MainActivity
+    method: data_api
+    port: 8791
+    actions:
+    - reset_data:
+        keepAudit: false
+    - set_simulation:
+        scenario: QUIET
+    - shift_clock: back to offset 0
+    then: pull DB, apply original/files/flysf_persona.sql (Asha Rao -> Alex Morgan), push back
+    session:
+      file: original/files/flysf_session.preferences_pb
+      device_path: files/datastore/flysf_session.preferences_pb
+  mailsf:
+    package: dev.drizz.mailsf
+    launch_activity: dev.drizz.mailsf.MainActivity
+    method: push_db
+    db: build/s04d/mailsf.db
+    device_path: databases/mailsf.db
+    built_from: discover50_2/base/mailsf.db + original/files/mailsf.sql
+    session:
+      file: original/files/mailsf_session.preferences_pb
+      device_path: files/datastore/mailsf_session.preferences_pb
+order:
+- device_reset
+- contacts
+- set_time
+- apps (seed.py seed)
+- files
+- sms_in
+- home
+seeder: python3 seed.py seed s04d --serial $SERIAL
+databases:
+  mailsf:
+    file: build/s04d/mailsf.db
+    same_bytes_as_original: true
+    sha256: 31e8545d339879adfb070b87e472e40189d3f460e6f06d2621b318b0e5ba2c03
+    rows:
+      users: 1
+      contacts: 23
+      labels: 11
+      threads: 7
+      messages: 7
+      message_recipients: 7
+      message_labels: 9
+      thread_labels: 9
+      attachments: 0
+      audit_log: 0
+email:
+- from: Linus Carver <linus@dockyard.dev>
+  subject: Dockyard status page moved
+  sent: Mon 12 Oct 2026 11:30 PT
+  body: 'Heads up: status.dockyard.dev is now the canonical status page.'
+- from: Grace Liu <grace.liu@northwind.co>
+  subject: Open enrolment closes Nov 13
+  sent: Wed 14 Oct 2026 09:00 PT
+  body: 'Reminder: benefits open enrolment closes Friday, November 13. Nothing to do if you are keeping your plan.'
+- from: Northwind IT <it-help@northwind.co>
+  subject: Scheduled maintenance Saturday 10/24
+  sent: Fri 16 Oct 2026 15:00 PT
+  body: VPN will be unavailable Saturday 10/24 from 22:00 to 23:30 PT. No action needed.
+- from: Maya Chen <maya.chen@gmail.com>
+  subject: Lunch Thursday?
+  sent: Sun 18 Oct 2026 19:40 PT
+  body: Free for dim sum Thursday? Mom says hi.
+- from: The Weekly Byte <digest@weeklybyte.news>
+  subject: 'The Weekly Byte #121: what shipped this week'
+  sent: Mon 19 Oct 2026 06:00 PT
+  body: Ten links worth your time this week. 1) Compose previews 2) SQLite tricks ...
+- from: GSRS Delegate Desk <delegates@gsrs-summit.example>
+  subject: 'GSRS 2026: your delegate pamphlet'
+  sent: Mon 19 Oct 2026 08:00 PT
+  body: 'Dear club captain,
+
+
+    Congratulations - Golden Gate State University has three delegate places at the Global Student Robotics Summit
+    2026 in London. Everything you need is in the delegate pamphlet (also downloaded to your phone as GSRS_2026_Delegate_Pamphlet.pdf).
+    Please read all three pages before booking travel.
+
+
+    GSRS Delegate Desk'
+- from: Maya Thompson <maya.thompson@northwind.co>
+  subject: Standup notes — Monday
+  sent: Mon 19 Oct 2026 10:05 PT
+  body: 'Shipped: onboarding v2 behind a flag. Blocked: nothing. Next: perf pass on search.'

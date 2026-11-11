@@ -1,0 +1,447 @@
+note: 'Generated for reading: the original''s seed.yaml with this version''s texts. The task YAML and seed.py are
+  what the bench runs.'
+changes_from_original:
+  texts_removed:
+  - from: +1 628-555-0147
+    body: hey it's Jia, new number! for the ticket my DOB is 30 May 2005 btw
+  - from: +1 415-555-0650
+    body: 'UPDATE: the dean found money for Jia too, so it''s FIVE of us flying and staying. Same rules. Jia Li,
+      DOB 30 May 2006, female.'
+  texts_added:
+  - from: +1 628-555-0147
+    body: hey it's Jia! my phone's at the repair shop till Friday so I'm on my roommate's for now 🙃 use my normal
+      number for anything trip related
+  - from: +1 415-555-0650
+    body: 'UPDATE: the dean found money for Jia too, so it''s FIVE of us flying and staying. Same rules. Jia Li,
+      DOB 30 May 2006 (from her passport), female.'
+task: students5.s01b-ny-trip-flights-and-stay
+persona:
+  name: Alex Morgan
+  home: 742 Valencia St, Apt 3, San Francisco CA 94110
+clock:
+  date: '2026-10-20'
+  time: 09:00
+  timezone: America/Los_Angeles
+device:
+  reset:
+    sms: true
+    contacts: true
+  contacts:
+  - name: Neha Sharma
+    phone: +1 415-555-0611
+  - name: Kabir Mehta
+    phone: +1 415-555-0612
+  - name: Tomas Alvarez
+    phone: +1 415-555-0613
+  - name: Jia Li
+    phone: +1 415-555-0614
+  - name: Ethan Brooks
+    phone: +1 415-555-0615
+  - name: Neha Shah
+    phone: +1 415-555-0616
+  - name: Dana Okafor
+    phone: +1 415-555-0650
+  - name: Maya Chen
+    phone: +1 415-555-0199
+  - name: Sam Reyes
+    phone: +1 415-555-0123
+  sms_in:
+  - from: +1 415-555-0650
+    body: Check your email, the NY travel rules are in there. Don't book anything before reading it 🙏
+  - from: +1 415-555-0611
+    body: so hyped for NY!! also my last name on my passport is Sharma, just Sharma, no middle name
+  - from: +1 415-555-0616
+    body: hey are you going to the thermo review session tonight?
+  - from: +1 628-555-0147
+    body: hey it's Jia! my phone's at the repair shop till Friday so I'm on my roommate's for now 🙃 use my normal
+      number for anything trip related
+  - from: +1 415-555-0650
+    body: 'UPDATE: the dean found money for Jia too, so it''s FIVE of us flying and staying. Same rules. Jia Li,
+      DOB 30 May 2006 (from her passport), female.'
+  - from: +1 415-555-0613
+    body: crate's packed, 23kg on the dot. I'll carry it as my checked bag
+  - from: +1 415-555-0199
+    body: can you grab milk on the way home
+  files: []
+apps:
+  flysf:
+    package: dev.drizz.flysf
+    launch_activity: dev.drizz.flysf.MainActivity
+    method: data_api
+    port: 8791
+    actions:
+    - reset_data:
+        keepAudit: false
+    - set_simulation:
+        scenario: QUIET
+    - shift_clock: back to offset 0
+    then: pull DB, apply original/files/flysf_persona.sql (Asha Rao -> Alex Morgan), push back
+    session:
+      file: original/files/flysf_session.preferences_pb
+      device_path: files/datastore/flysf_session.preferences_pb
+  airbnb:
+    package: dev.drizz.airbnb
+    launch_activity: dev.drizz.airbnb.MainActivity
+    method: push_db
+    db: build/s01b/airbnb.db
+    device_path: databases/airbnb.db
+    built_from: discover50_2/base/airbnb.db + original/files/airbnb.sql
+  mailsf:
+    package: dev.drizz.mailsf
+    launch_activity: dev.drizz.mailsf.MainActivity
+    method: push_db
+    db: build/s01b/mailsf.db
+    device_path: databases/mailsf.db
+    built_from: discover50_2/base/mailsf.db + original/files/mailsf.sql
+    session:
+      file: original/files/mailsf_session.preferences_pb
+      device_path: files/datastore/mailsf_session.preferences_pb
+  calsf:
+    package: dev.drizz.calsf
+    launch_activity: dev.drizz.calsf.MainActivity
+    method: push_db
+    db: build/s01b/calsf.db
+    device_path: databases/calsf.db
+    built_from: discover50_2/base/calsf.db + original/files/calsf.sql
+    session:
+      file: original/files/calsf_session.preferences_pb
+      device_path: files/datastore/calsf_session.preferences_pb
+order:
+- device_reset
+- contacts
+- set_time
+- apps (seed.py seed)
+- files
+- sms_in
+- home
+seeder: python3 seed.py seed s01b --serial $SERIAL
+databases:
+  airbnb:
+    file: build/s01b/airbnb.db
+    same_bytes_as_original: true
+    sha256: 54200005a4e84915d18695a24a2c59f2ef03434f3f3e89143db3d60e9ca2c782
+    rows:
+      users: 77
+      listings: 102
+      listing_photos: 464
+      service_offerings: 35
+      reviews: 2490
+      bookings: 69
+      payment_methods: 5
+      payments: 12
+      conversations: 6
+      messages: 20
+      wishlists: 5
+      wishlist_items: 10
+      recently_viewed: 8
+      audit_log: 0
+      bench_session: 1
+  mailsf:
+    file: build/s01b/mailsf.db
+    same_bytes_as_original: true
+    sha256: 525592eddc8e6114d50e39f68df54e485e67aa5690a19a846f8c8348b4419ae5
+    rows:
+      users: 1
+      contacts: 23
+      labels: 11
+      threads: 8
+      messages: 8
+      message_recipients: 8
+      message_labels: 10
+      thread_labels: 10
+      attachments: 0
+      audit_log: 0
+  calsf:
+    file: build/s01b/calsf.db
+    same_bytes_as_original: true
+    sha256: 17309d8ea3e32a3c1933ee2e63830ad80811cb421b2ecc2da4331458e4b5af8c
+    rows:
+      users: 1
+      contacts: 10
+      calendars: 6
+      event_series: 4
+      events: 39
+      event_guests: 100
+      reminders: 25
+      event_attachments: 0
+      tasks: 0
+      busy_blocks: 0
+      audit_log: 0
+email:
+- from: Linus Carver <linus@dockyard.dev>
+  subject: Dockyard status page moved
+  sent: Mon 12 Oct 2026 11:30 PT
+  body: 'Heads up: status.dockyard.dev is now the canonical status page.'
+- from: Grace Liu <grace.liu@northwind.co>
+  subject: Open enrolment closes Nov 13
+  sent: Wed 14 Oct 2026 09:00 PT
+  body: 'Reminder: benefits open enrolment closes Friday, November 13. Nothing to do if you are keeping your plan.'
+- from: ESCRO Registrar <registrar@escro.example>
+  subject: ESCRO 2026 - see you in New York!
+  sent: Wed 14 Oct 2026 09:05 PT
+  body: 'Team 4471 (Golden Gate State University) is confirmed for ESCRO 2026, Harborview Expo Hall, Pier 92, 711
+    12th Ave, New York. Team check-in: Thursday 12 November, 2:00-5:00 PM ET, Hall B lobby. Competition: Friday
+    13 - Sunday 15 November.'
+- from: Northwind IT <it-help@northwind.co>
+  subject: Scheduled maintenance Saturday 10/24
+  sent: Fri 16 Oct 2026 15:00 PT
+  body: VPN will be unavailable Saturday 10/24 from 22:00 to 23:30 PT. No action needed.
+- from: Dr. Dana Okafor <dana.okafor@ggsu.example>
+  subject: NY trip - travel rules (read before booking!)
+  sent: Fri 16 Oct 2026 18:40 PT
+  body: 'Hi Alex,
+
+
+    The department approved ESCRO in New York. You''re booking for the four of you (you, Neha, Kabir and Tomas).
+    Rules, because the club account is nearly empty:
+
+
+    FLIGHTS
+
+    1. Out on Thursday 12 Nov, back on Monday 16 Nov. Economy, the cheapest fare that works.
+
+    2. Team check-in at the Expo Hall closes at 5:00 PM New York time on Thursday, and it''s an hour from either
+    airport, so you have to LAND by 4:00 PM Eastern.
+
+    3. The hostel doors are locked midnight to 6 AM, so no flight that leaves SFO before 6:00 AM.
+
+    4. We''re packing the pit until noon on Monday, so the flight home can''t leave before 1:00 PM Eastern.
+
+    5. Everyone on the same flights, both ways. JFK or Newark, I don''t mind which.
+
+    6. The robot crate flies as ONE checked bag, each way, on Tomas''s ticket (he''s the crate handler). Nobody
+    else checks a bag. No paid seats.
+
+    7. Names and dates of birth exactly as on your IDs - roster below.
+
+
+    STAY
+
+    One Airbnb for all of us, Thursday night to Monday morning. It has to be in Manhattan (we''re walking to Pier
+    92), it needs a real kitchen because we''re cooking to save money, and the whole stay must come to $1,600 or
+    less all in. Cheapest that works.
+
+
+    ROSTER (as on ID)
+
+    Alex Morgan  -  DOB 11 Jul 2004  -  male
+
+    Neha Sharma  -  DOB 14 Mar 2005  -  female
+
+    Kabir Mehta  -  DOB 2 Sep 2004  -  male
+
+    Tomas Alvarez  -  DOB 21 Jan 2005  -  male
+
+
+    Text everyone the flights and the address when it''s done.
+
+
+    Dana'
+- from: Maya Chen <maya.chen@gmail.com>
+  subject: Lunch Thursday?
+  sent: Sun 18 Oct 2026 19:40 PT
+  body: Free for dim sum Thursday? Mom says hi.
+- from: The Weekly Byte <digest@weeklybyte.news>
+  subject: 'The Weekly Byte #121: what shipped this week'
+  sent: Mon 19 Oct 2026 06:00 PT
+  body: Ten links worth your time this week. 1) Compose previews 2) SQLite tricks ...
+- from: Maya Thompson <maya.thompson@northwind.co>
+  subject: Standup notes — Monday
+  sent: Mon 19 Oct 2026 10:05 PT
+  body: 'Shipped: onboarding v2 behind a flag. Blocked: nothing. Next: perf pass on search.'
+calendar:
+- title: Gym
+  start: Mon 19 Oct 2026 07:00 PT
+  end: Mon 19 Oct 2026 08:00 PT
+  location: ''
+  status: CONFIRMED
+- title: Team standup
+  start: Mon 19 Oct 2026 09:30 PT
+  end: Mon 19 Oct 2026 09:45 PT
+  location: ''
+  status: CONFIRMED
+- title: Team standup
+  start: Tue 20 Oct 2026 09:30 PT
+  end: Tue 20 Oct 2026 09:45 PT
+  location: ''
+  status: CONFIRMED
+- title: Gym
+  start: Wed 21 Oct 2026 07:00 PT
+  end: Wed 21 Oct 2026 08:00 PT
+  location: ''
+  status: CONFIRMED
+- title: Team standup
+  start: Wed 21 Oct 2026 09:30 PT
+  end: Wed 21 Oct 2026 09:45 PT
+  location: ''
+  status: CONFIRMED
+- title: Team standup
+  start: Thu 22 Oct 2026 09:30 PT
+  end: Thu 22 Oct 2026 09:45 PT
+  location: ''
+  status: CONFIRMED
+- title: Gym
+  start: Fri 23 Oct 2026 07:00 PT
+  end: Fri 23 Oct 2026 08:00 PT
+  location: ''
+  status: CONFIRMED
+- title: Team standup
+  start: Fri 23 Oct 2026 09:30 PT
+  end: Fri 23 Oct 2026 09:45 PT
+  location: ''
+  status: CONFIRMED
+- title: Gym
+  start: Mon 26 Oct 2026 07:00 PT
+  end: Mon 26 Oct 2026 08:00 PT
+  location: ''
+  status: CONFIRMED
+- title: Team standup
+  start: Mon 26 Oct 2026 09:30 PT
+  end: Mon 26 Oct 2026 09:45 PT
+  location: ''
+  status: CONFIRMED
+- title: Team standup
+  start: Tue 27 Oct 2026 09:30 PT
+  end: Tue 27 Oct 2026 09:45 PT
+  location: ''
+  status: CONFIRMED
+- title: Gym
+  start: Wed 28 Oct 2026 07:00 PT
+  end: Wed 28 Oct 2026 08:00 PT
+  location: ''
+  status: CONFIRMED
+- title: Team standup
+  start: Wed 28 Oct 2026 09:30 PT
+  end: Wed 28 Oct 2026 09:45 PT
+  location: ''
+  status: CONFIRMED
+- title: Team standup
+  start: Thu 29 Oct 2026 09:30 PT
+  end: Thu 29 Oct 2026 09:45 PT
+  location: ''
+  status: CONFIRMED
+- title: Gym
+  start: Fri 30 Oct 2026 07:00 PT
+  end: Fri 30 Oct 2026 08:00 PT
+  location: ''
+  status: CONFIRMED
+- title: Team standup
+  start: Fri 30 Oct 2026 09:30 PT
+  end: Fri 30 Oct 2026 09:45 PT
+  location: ''
+  status: CONFIRMED
+- title: Gym
+  start: Mon 02 Nov 2026 07:00 PT
+  end: Mon 02 Nov 2026 08:00 PT
+  location: ''
+  status: CONFIRMED
+- title: Team standup
+  start: Mon 02 Nov 2026 09:30 PT
+  end: Mon 02 Nov 2026 09:45 PT
+  location: ''
+  status: CONFIRMED
+- title: Team standup
+  start: Tue 03 Nov 2026 09:30 PT
+  end: Tue 03 Nov 2026 09:45 PT
+  location: ''
+  status: CONFIRMED
+- title: Gym
+  start: Wed 04 Nov 2026 07:00 PT
+  end: Wed 04 Nov 2026 08:00 PT
+  location: ''
+  status: CONFIRMED
+- title: Team standup
+  start: Wed 04 Nov 2026 09:30 PT
+  end: Wed 04 Nov 2026 09:45 PT
+  location: ''
+  status: CONFIRMED
+- title: Team standup
+  start: Thu 05 Nov 2026 09:30 PT
+  end: Thu 05 Nov 2026 09:45 PT
+  location: ''
+  status: CONFIRMED
+- title: Gym
+  start: Fri 06 Nov 2026 07:00 PT
+  end: Fri 06 Nov 2026 08:00 PT
+  location: ''
+  status: CONFIRMED
+- title: Team standup
+  start: Fri 06 Nov 2026 09:30 PT
+  end: Fri 06 Nov 2026 09:45 PT
+  location: ''
+  status: CONFIRMED
+- title: Gym
+  start: Mon 09 Nov 2026 07:00 PT
+  end: Mon 09 Nov 2026 08:00 PT
+  location: ''
+  status: CONFIRMED
+- title: Team standup
+  start: Mon 09 Nov 2026 09:30 PT
+  end: Mon 09 Nov 2026 09:45 PT
+  location: ''
+  status: CONFIRMED
+- title: Team standup
+  start: Tue 10 Nov 2026 09:30 PT
+  end: Tue 10 Nov 2026 09:45 PT
+  location: ''
+  status: CONFIRMED
+- title: Thermo midterm
+  start: Tue 10 Nov 2026 10:00 PT
+  end: Tue 10 Nov 2026 11:30 PT
+  location: Science 210
+  status: CONFIRMED
+- title: Gym
+  start: Wed 11 Nov 2026 07:00 PT
+  end: Wed 11 Nov 2026 08:00 PT
+  location: ''
+  status: CONFIRMED
+- title: Team standup
+  start: Wed 11 Nov 2026 09:30 PT
+  end: Wed 11 Nov 2026 09:45 PT
+  location: ''
+  status: CONFIRMED
+- title: Team standup
+  start: Thu 12 Nov 2026 09:30 PT
+  end: Thu 12 Nov 2026 09:45 PT
+  location: ''
+  status: CONFIRMED
+- title: ESCRO 2026 - New York 🤖
+  start: Fri 13 Nov 2026 00:00 PT
+  end: Mon 16 Nov 2026 00:00 PT
+  location: Harborview Expo Hall, Pier 92, 711 12th Ave, New York
+  status: CONFIRMED
+- title: Gym
+  start: Fri 13 Nov 2026 07:00 PT
+  end: Fri 13 Nov 2026 08:00 PT
+  location: ''
+  status: CONFIRMED
+- title: Team standup
+  start: Fri 13 Nov 2026 09:30 PT
+  end: Fri 13 Nov 2026 09:45 PT
+  location: ''
+  status: CONFIRMED
+- title: Team standup
+  start: Mon 16 Nov 2026 09:30 PT
+  end: Mon 16 Nov 2026 09:45 PT
+  location: ''
+  status: CONFIRMED
+- title: Team standup
+  start: Tue 17 Nov 2026 09:30 PT
+  end: Tue 17 Nov 2026 09:45 PT
+  location: ''
+  status: CONFIRMED
+- title: Team standup
+  start: Wed 18 Nov 2026 09:30 PT
+  end: Wed 18 Nov 2026 09:45 PT
+  location: ''
+  status: CONFIRMED
+- title: Team standup
+  start: Thu 19 Nov 2026 09:30 PT
+  end: Thu 19 Nov 2026 09:45 PT
+  location: ''
+  status: CONFIRMED
+- title: Team standup
+  start: Fri 20 Nov 2026 09:30 PT
+  end: Fri 20 Nov 2026 09:45 PT
+  location: ''
+  status: CONFIRMED

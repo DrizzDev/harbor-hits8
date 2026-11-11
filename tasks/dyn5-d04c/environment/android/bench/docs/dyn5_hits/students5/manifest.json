@@ -1,0 +1,121 @@
+{
+ "s01": {
+  "dbs": {
+   "airbnb": "airbnb.db",
+   "mailsf": "mailsf.db",
+   "calsf": "calsf.db"
+  },
+  "files": [],
+  "flysf": {
+   "reset": true
+  },
+  "cartsf": null,
+  "apps": [
+   "flysf",
+   "airbnb",
+   "mailsf",
+   "calsf"
+  ]
+ },
+ "s02": {
+  "dbs": {
+   "dashsf": "dashsf.db",
+   "mailsf": "mailsf.db",
+   "calsf": "calsf.db"
+  },
+  "files": [],
+  "flysf": null,
+  "cartsf": {
+   "reset": true,
+   "stock": {
+    "bay-market": {
+     "p-granola-bars": true,
+     "p-pretzels": true,
+     "p-bananas": true,
+     "p-bagels": true,
+     "p-cream-cheese": true,
+     "p-skyr": true,
+     "p-protein-bars": true,
+     "p-gala-apples": true,
+     "p-trail-mix": true
+    }
+   }
+  },
+  "apps": [
+   "dashsf",
+   "cartsf",
+   "mailsf",
+   "calsf"
+  ]
+ },
+ "s03": {
+  "dbs": {
+   "calsf": "calsf.db"
+  },
+  "files": [],
+  "flysf": null,
+  "cartsf": {
+   "reset": true,
+   "stock": {
+    "bay-market": {
+     "p-almond-milk": true,
+     "p-sandwich-cookies": true,
+     "p-ground-coffee": true,
+     "p-sparkling-water": true,
+     "p-string-cheese": true,
+     "p-granola-bars": true,
+     "p-frozen-pizza": true,
+     "p-bananas": true,
+     "p-large-eggs": true,
+     "p-bagels": true,
+     "p-cream-cheese": true,
+     "p-paper-towels": true,
+     "p-chocolate-ice-cream": true,
+     "p-oat-milk": false,
+     "p-cold-brew": false
+    }
+   }
+  },
+  "apps": [
+   "cartsf",
+   "calsf"
+  ]
+ },
+ "s04": {
+  "dbs": {
+   "mailsf": "mailsf.db"
+  },
+  "files": [
+   {
+    "src": "fixtures/GSRS_2026_Delegate_Pamphlet.pdf",
+    "dest": "/sdcard/Download/GSRS_2026_Delegate_Pamphlet.pdf"
+   }
+  ],
+  "flysf": {
+   "reset": true
+  },
+  "cartsf": null,
+  "apps": [
+   "flysf",
+   "mailsf"
+  ]
+ },
+ "s05": {
+  "dbs": {
+   "mailsf": "mailsf.db",
+   "calsf": "calsf.db"
+  },
+  "files": [
+   {
+    "src": "fixtures/ESCRO_2026_Game_Manual.pdf",
+    "dest": "/sdcard/Download/ESCRO_2026_Game_Manual.pdf"
+   }
+  ],
+  "flysf": null,
+  "cartsf": null,
+  "apps": [
+   "mailsf",
+   "calsf"
+  ]
+ }
+}

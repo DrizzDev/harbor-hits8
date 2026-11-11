@@ -1,0 +1,21 @@
+{
+ "s04d": {
+  "dbs": {
+   "mailsf": "mailsf.db"
+  },
+  "files": [
+   {
+    "src": "fixtures/GSRS_2026_Delegate_Pamphlet.pdf",
+    "dest": "/sdcard/Download/GSRS_2026_Delegate_Pamphlet.pdf"
+   }
+  ],
+  "flysf": {
+   "reset": true
+  },
+  "cartsf": null,
+  "apps": [
+   "flysf",
+   "mailsf"
+  ]
+ }
+}

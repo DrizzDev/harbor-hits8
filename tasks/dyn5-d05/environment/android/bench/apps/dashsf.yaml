@@ -1,0 +1,16 @@
+# DashSF bench build: offline food-delivery app (DoorDash-like), San Francisco only; whole state is one SQLite file.
+# Source: ../drizz-doordash-replica (benchmarks/14th_oct_run/README.md). Paths are relative to this file.
+id: dashsf
+name: DashSF
+package: dev.drizz.dashsf.bench
+description: Offline food-delivery app (DoorDash-like), San Francisco only. Seeds come signed in as Alex Morgan.
+apk: ../../drizz-doordash-replica/app/build/outputs/apk/bench/debug/app-bench-debug.apk   # installed when missing / --reinstall
+launch_activity: dev.drizz.dashsf.MainActivity
+launch_wait_s: 8
+
+state:
+  sqlite:
+    db: databases/dashsf.db
+    seeds_dir: ../../drizz-doordash-replica/benchmarks/14th_oct_run/seeds   # task_NN.db files are pushed as-is
+    digest_queries: ../../drizz-doordash-replica/benchmarks/14th_oct_run/seeds/digest-queries.json
+    diff_exclude: []

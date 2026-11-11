@@ -1,0 +1,47 @@
+{
+ "s01b": {
+  "flysf_itineraries": [
+   "f-SFO-EWR-20261112-UA4983",
+   "f-EWR-SFO-20261116-UA3987"
+  ],
+  "adults": 5,
+  "brand": "BASIC",
+  "passengers": {
+   "Alex Morgan": "2004-07-11",
+   "Neha Sharma": "2005-03-14",
+   "Kabir Mehta": "2004-09-02",
+   "Tomas Alvarez": "2005-01-21",
+   "Jia Li": "2006-05-30"
+  },
+  "bag_passenger": "Tomas Alvarez",
+  "airbnb_listing": 901,
+  "check_in": "2026-11-12",
+  "check_out": "2026-11-16",
+  "guests": 5,
+  "airbnb_total": 1550,
+  "sms_to": [
+   "neha",
+   "kabir",
+   "tomas",
+   "jia"
+  ],
+  "sms_must": [
+   "(UA)?\\s?4983",
+   "(UA)?\\s?3987",
+   "(?i)hell'?s kitchen|461 w(est)? 47"
+  ],
+  "phones": {
+   "neha": "4155550611",
+   "kabir": "4155550612",
+   "tomas": "4155550613",
+   "jia": "4155550614",
+   "ethan": "4155550615",
+   "neha_shah": "4155550616",
+   "coach": "4155550650",
+   "maya": "4155550199",
+   "sam": "4155550123"
+  },
+  "stranger": "6285550147",
+  "temp_number": "6285550147"
+ }
+}

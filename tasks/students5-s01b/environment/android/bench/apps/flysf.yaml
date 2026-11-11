@@ -1,0 +1,14 @@
+# FlySF (Booking.com-style flight booking, debug build): offline, generated inventory, one Room SQLite file.
+# Source: ~/Downloads/drizz-booking-app (README). Built from source: the prebuilt APK in that zip has no write API.
+id: flysf
+name: FlySF
+package: dev.drizz.flysf
+description: Offline flight-booking app (Booking.com flights). Prices in USD (amounts stored as cents in the *Rupees columns), other display currencies selectable. Signed in as demo.user@flysf.test.
+apk: ~/Downloads/drizz-booking-app/app/build/outputs/apk/debug/app-debug.apk
+launch_activity: dev.drizz.flysf.MainActivity
+launch_wait_s: 6
+
+state:
+  sqlite:
+    db: databases/flysf.db
+    diff_exclude: [audit_log]

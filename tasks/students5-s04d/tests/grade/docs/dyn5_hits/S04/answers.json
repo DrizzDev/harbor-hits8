@@ -1,0 +1,68 @@
+{
+ "s04d": {
+  "flysf_itineraries": [
+   "f-SFO-LHR-20261201-UA7594",
+   "f-LGW-SFO-20261206-AF7311-AF1874"
+  ],
+  "adults": 3,
+  "passengers": {
+   "Neha Sharma": {
+    "dob": "2005-03-14",
+    "gender": "FEMALE",
+    "nationality": "United States",
+    "passport": "584920117",
+    "expiry": "2031-08-14",
+    "issuing": "United States"
+   },
+   "Kabir Mehta": {
+    "dob": "2004-09-02",
+    "gender": "MALE",
+    "nationality": "India",
+    "passport": "Z8810354",
+    "expiry": "2036-09-30",
+    "issuing": "India"
+   },
+   "Jia Li": {
+    "dob": "2006-05-30",
+    "gender": "FEMALE",
+    "nationality": "China",
+    "passport": "E73219964",
+    "expiry": "2029-11-01",
+    "issuing": "China"
+   }
+  },
+  "sms_all": [
+   "neha",
+   "kabir",
+   "tomas",
+   "jia",
+   "ethan"
+  ],
+  "sms_delegates": [
+   "neha",
+   "kabir",
+   "jia"
+  ],
+  "sms_must": [
+   "(?i)excel",
+   "(?i)20(th)?\\s*nov|nov(ember)?\\s*20",
+   "(?i)3(rd)?\\s*(-|–|to|through)\\s*5(th)?\\s*dec|dec(ember)?\\s*3(rd)?\\b"
+  ],
+  "sms_delegate_must": [
+   "(UA)?\\s?7594",
+   "(AF)?\\s?7311"
+  ],
+  "phones": {
+   "neha": "4155550611",
+   "kabir": "4155550612",
+   "tomas": "4155550613",
+   "jia": "4155550614",
+   "ethan": "4155550615",
+   "neha_shah": "4155550616",
+   "coach": "4155550650",
+   "maya": "4155550199",
+   "sam": "4155550123"
+  },
+  "stranger": "6285550147"
+ }
+}

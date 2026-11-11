@@ -1,0 +1,78 @@
+id: students5.s01b-ny-trip-flights-and-stay
+app: flysf
+apps:
+- flysf
+- airbnb
+- mailsf
+- calsf
+stock_apps:
+- messages
+- contacts
+title: 'The New York trip: five flights and one stay (v2: Jia''s temp number)'
+difficulty: hard
+tags:
+- students5
+- cross-app
+- long-horizon
+vars:
+  students5_id: s01b
+prompt: 'Coach signed off on New York! Book the team''s flights and somewhere for all of us to stay - cheapest that actually
+  follows coach''s rules, the club account is nearly empty. Then text everyone the plan.
+
+  '
+setup:
+- stop_app: all
+- device_reset:
+    sms: true
+    contacts: true
+    alarms: false
+- contacts:
+  - name: Neha Sharma
+    phone: +1 415-555-0611
+  - name: Kabir Mehta
+    phone: +1 415-555-0612
+  - name: Tomas Alvarez
+    phone: +1 415-555-0613
+  - name: Jia Li
+    phone: +1 415-555-0614
+  - name: Ethan Brooks
+    phone: +1 415-555-0615
+  - name: Neha Shah
+    phone: +1 415-555-0616
+  - name: Dana Okafor
+    phone: +1 415-555-0650
+  - name: Maya Chen
+    phone: +1 415-555-0199
+  - name: Sam Reyes
+    phone: +1 415-555-0123
+- set_time:
+    date: '2026-10-20'
+    time: 09:00
+    timezone: America/Los_Angeles
+- shell: python3 {{task_dir}}/../seed.py seed s01b --serial $SERIAL
+- sms_in:
+  - from: +1 415-555-0650
+    body: Check your email, the NY travel rules are in there. Don't book anything before reading it 🙏
+  - from: +1 415-555-0611
+    body: so hyped for NY!! also my last name on my passport is Sharma, just Sharma, no middle name
+  - from: +1 415-555-0616
+    body: hey are you going to the thermo review session tonight?
+  - from: +1 628-555-0147
+    body: hey it's Jia! my phone's at the repair shop till Friday so I'm on my roommate's for now 🙃 use my normal number for
+      anything trip related
+  - from: +1 415-555-0650
+    body: 'UPDATE: the dean found money for Jia too, so it''s FIVE of us flying and staying. Same rules. Jia Li, DOB 30 May
+      2006 (from her passport), female.'
+  - from: +1 415-555-0613
+    body: crate's packed, 23kg on the dot. I'll carry it as my checked bag
+  - from: +1 415-555-0199
+    body: can you grab milk on the way home
+- home
+capture_device:
+  sms: true
+  contacts: true
+limits:
+  timeout_s: 5400
+  max_steps: 400
+cleanup:
+- stop_app: all

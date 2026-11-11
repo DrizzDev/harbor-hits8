@@ -1,0 +1,21 @@
+# main = the agent's container (Harbor builds it from ./Dockerfile). android = emulator + phone service.
+# The agent reaches the phone only at http://android:8000/mcp. adb stays inside the android container.
+services:
+  main:
+    depends_on:
+      android:
+        condition: service_healthy
+  android:
+    build:
+      context: ./android
+    devices:
+      - /dev/kvm
+    environment:
+      # Empty unless the operator exports DRIZZ_ORACLE_TOKEN for an oracle run; empty keeps the oracle route shut.
+      ORACLE_TOKEN: "${DRIZZ_ORACLE_TOKEN:-}"
+    healthcheck:
+      test: ["CMD-SHELL", "test -f /state/ready"]
+      interval: 10s
+      timeout: 5s
+      start_period: 1200s
+      retries: 6

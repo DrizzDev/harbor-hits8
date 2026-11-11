@@ -1,0 +1,210 @@
+{
+ "d01": {
+  "dbs": {
+   "mailsf": "mailsf.db",
+   "calsf": "calsf.db",
+   "dashsf": "dashsf.db"
+  },
+  "files": [],
+  "cartsf": {
+   "sql": "\n    UPDATE orders SET status = 'DELIVERED', placedAt = placedAt - 345600000, deliveredAt = placedAt - 335000000,\n        windowStartMillis = windowStartMillis - 345600000, windowEndMillis = windowEndMillis - 345600000,\n        itemsFound = itemsTotal WHERE id = 'o-seed-live';\n    UPDATE order_items SET outcome = 'FOUND', finalCents = estimatedCents WHERE orderId = 'o-seed-live';\n    DELETE FROM replacement_requests WHERE orderId = 'o-seed-live';\n    UPDATE payment_methods SET holder = 'ALEX MORGAN';\n",
+   "stock": {
+    "bay-market": {
+     "p-russet-potatoes": true,
+     "p-half-and-half": true,
+     "p-garlic": true,
+     "p-sourdough": true,
+     "p-chicken-broth": true,
+     "p-yellow-onions": true,
+     "p-napkins": true,
+     "p-paper-towels": true,
+     "p-sparkling-water": true,
+     "p-honeycrisp-apples": true,
+     "p-vanilla-ice-cream": true,
+     "p-ground-coffee": true,
+     "p-ipa": true,
+     "p-oat-milk": true,
+     "p-sparkling-wine": true,
+     "p-gala-apples": true
+    }
+   }
+  },
+  "apps": [
+   "cartsf",
+   "dashsf",
+   "mailsf",
+   "calsf"
+  ],
+  "events": []
+ },
+ "d02": {
+  "dbs": {
+   "mailsf": "mailsf.db",
+   "calsf": "calsf.db"
+  },
+  "files": [],
+  "cartsf": {
+   "sql": "\n    UPDATE orders SET status = 'DELIVERED', placedAt = placedAt - 345600000, deliveredAt = placedAt - 335000000,\n        windowStartMillis = windowStartMillis - 345600000, windowEndMillis = windowEndMillis - 345600000,\n        itemsFound = itemsTotal WHERE id = 'o-seed-live';\n    UPDATE order_items SET outcome = 'FOUND', finalCents = estimatedCents WHERE orderId = 'o-seed-live';\n    DELETE FROM replacement_requests WHERE orderId = 'o-seed-live';\n    UPDATE payment_methods SET holder = 'ALEX MORGAN';\nDELETE FROM cart_items WHERE cartId = 'c-u-demo-bay-market' AND productId <> 'p-large-eggs';",
+   "stock": {
+    "bay-market": {
+     "p-chicken-thighs": true,
+     "p-russet-potatoes": true,
+     "p-carrots": true,
+     "p-yellow-onions": true,
+     "p-garlic": true,
+     "p-basil": true,
+     "p-chicken-broth": true,
+     "p-large-eggs": true,
+     "p-honeycrisp-apples": true,
+     "p-flour": true,
+     "p-sugar": true,
+     "p-oat-milk": true,
+     "p-parmesan": true,
+     "p-vanilla-ice-cream": true,
+     "p-gala-apples": true,
+     "p-organic-eggs": true,
+     "p-almond-milk": true,
+     "p-grapes": true,
+     "p-egg-whites": true,
+     "p-string-cheese": true,
+     "p-whole-milk": true,
+     "p-chicken-breast": true,
+     "p-whole-chicken": false
+    }
+   }
+  },
+  "apps": [
+   "cartsf",
+   "mailsf",
+   "calsf"
+  ],
+  "events": [
+   "oat_runs_out",
+   "shopper_starts",
+   "shopper_continues_1",
+   "shopper_continues_2",
+   "shopper_continues_3",
+   "shopper_continues_4",
+   "shopper_continues_5"
+  ]
+ },
+ "d03": {
+  "dbs": {
+   "calsf": "calsf.db",
+   "mailsf": "mailsf.db",
+   "dashsf": "dashsf.db"
+  },
+  "files": [],
+  "cartsf": {
+   "sql": "\n    UPDATE orders SET status = 'DELIVERED', placedAt = placedAt - 345600000, deliveredAt = placedAt - 335000000,\n        windowStartMillis = windowStartMillis - 345600000, windowEndMillis = windowEndMillis - 345600000,\n        itemsFound = itemsTotal WHERE id = 'o-seed-live';\n    UPDATE order_items SET outcome = 'FOUND', finalCents = estimatedCents WHERE orderId = 'o-seed-live';\n    DELETE FROM replacement_requests WHERE orderId = 'o-seed-live';\n    UPDATE payment_methods SET holder = 'ALEX MORGAN';\nDELETE FROM cart_items WHERE cartId = 'c-u-demo-bay-market';\nINSERT OR REPLACE INTO cart_items (id, cartId, productId, soldBy, units, hundredthPounds, unitPriceCents, replacementPreference, specificReplacementId, note, addedAt) VALUES ('ci-c-u-demo-mission-pantry-p-roma-tomatoes', 'c-u-demo-mission-pantry', 'p-roma-tomatoes', 'WEIGHT', 1, 100, (SELECT priceCents FROM store_products WHERE retailerId = 'mission-pantry' AND productId = 'p-roma-tomatoes'), 'BEST_MATCH', NULL, '', (SELECT MAX(createdAt) FROM carts));\nINSERT OR REPLACE INTO cart_items (id, cartId, productId, soldBy, units, hundredthPounds, unitPriceCents, replacementPreference, specificReplacementId, note, addedAt) VALUES ('ci-c-u-demo-mission-pantry-p-granola-bars', 'c-u-demo-mission-pantry', 'p-granola-bars', 'EACH', 1, 0, (SELECT priceCents FROM store_products WHERE retailerId = 'mission-pantry' AND productId = 'p-granola-bars'), 'BEST_MATCH', NULL, '', (SELECT MAX(createdAt) FROM carts));\nDELETE FROM order_items WHERE orderId = 'o-seed-earlier';\nINSERT INTO order_items (id, orderId, sequence, productId, name, soldBy, orderedUnits, orderedHundredthPounds, unitPriceCents, estimatedCents, outcome, replacementProductId, replacementName, finalUnits, finalHundredthPounds, finalUnitPriceCents, finalCents, replacementPreference, specificReplacementId, note, addedAfterPlacement) VALUES ('o-seed-earlier-i0', 'o-seed-earlier', 0, 'p-greek-yogurt', 'Plain Greek Yogurt', 'EACH', 2, 0, 731, 1462, 'FOUND', NULL, NULL, NULL, NULL, NULL, 1462, 'BEST_MATCH', NULL, '', 0);\nINSERT INTO order_items (id, orderId, sequence, productId, name, soldBy, orderedUnits, orderedHundredthPounds, unitPriceCents, estimatedCents, outcome, replacementProductId, replacementName, finalUnits, finalHundredthPounds, finalUnitPriceCents, finalCents, replacementPreference, specificReplacementId, note, addedAfterPlacement) VALUES ('o-seed-earlier-i1', 'o-seed-earlier', 1, 'p-corn-flakes', 'Corn Flakes', 'EACH', 1, 0, 520, 520, 'FOUND', NULL, NULL, NULL, NULL, NULL, 520, 'BEST_MATCH', NULL, '', 0);\nINSERT INTO order_items (id, orderId, sequence, productId, name, soldBy, orderedUnits, orderedHundredthPounds, unitPriceCents, estimatedCents, outcome, replacementProductId, replacementName, finalUnits, finalHundredthPounds, finalUnitPriceCents, finalCents, replacementPreference, specificReplacementId, note, addedAfterPlacement) VALUES ('o-seed-earlier-i2', 'o-seed-earlier', 2, 'p-whole-milk', 'Whole Milk', 'EACH', 1, 0, 575, 575, 'FOUND', NULL, NULL, NULL, NULL, NULL, 575, 'BEST_MATCH', NULL, '', 0);\nINSERT INTO order_items (id, orderId, sequence, productId, name, soldBy, orderedUnits, orderedHundredthPounds, unitPriceCents, estimatedCents, outcome, replacementProductId, replacementName, finalUnits, finalHundredthPounds, finalUnitPriceCents, finalCents, replacementPreference, specificReplacementId, note, addedAfterPlacement) VALUES ('o-seed-earlier-i3', 'o-seed-earlier', 3, 'p-bananas', 'Bananas', 'WEIGHT', 1, 200, 80, 160, 'FOUND', NULL, NULL, NULL, NULL, NULL, 160, 'BEST_MATCH', NULL, '', 0);\nINSERT INTO order_items (id, orderId, sequence, productId, name, soldBy, orderedUnits, orderedHundredthPounds, unitPriceCents, estimatedCents, outcome, replacementProductId, replacementName, finalUnits, finalHundredthPounds, finalUnitPriceCents, finalCents, replacementPreference, specificReplacementId, note, addedAfterPlacement) VALUES ('o-seed-earlier-i4', 'o-seed-earlier', 4, 'p-baby-spinach', 'Baby Spinach', 'EACH', 1, 0, 422, 422, 'FOUND', NULL, NULL, NULL, NULL, NULL, 422, 'BEST_MATCH', NULL, '', 0);\nINSERT INTO order_items (id, orderId, sequence, productId, name, soldBy, orderedUnits, orderedHundredthPounds, unitPriceCents, estimatedCents, outcome, replacementProductId, replacementName, finalUnits, finalHundredthPounds, finalUnitPriceCents, finalCents, replacementPreference, specificReplacementId, note, addedAfterPlacement) VALUES ('o-seed-earlier-i5', 'o-seed-earlier', 5, 'p-salmon', 'Atlantic Salmon Fillet', 'WEIGHT', 1, 150, 1621, 2432, 'FOUND', NULL, NULL, NULL, NULL, NULL, 2432, 'BEST_MATCH', NULL, '', 0);\nINSERT INTO order_items (id, orderId, sequence, productId, name, soldBy, orderedUnits, orderedHundredthPounds, unitPriceCents, estimatedCents, outcome, replacementProductId, replacementName, finalUnits, finalHundredthPounds, finalUnitPriceCents, finalCents, replacementPreference, specificReplacementId, note, addedAfterPlacement) VALUES ('o-seed-earlier-i6', 'o-seed-earlier', 6, 'p-ground-coffee', 'Ground Coffee', 'EACH', 1, 0, 1207, 1207, 'FOUND', NULL, NULL, NULL, NULL, NULL, 1207, 'BEST_MATCH', NULL, '', 0);\nINSERT INTO order_items (id, orderId, sequence, productId, name, soldBy, orderedUnits, orderedHundredthPounds, unitPriceCents, estimatedCents, outcome, replacementProductId, replacementName, finalUnits, finalHundredthPounds, finalUnitPriceCents, finalCents, replacementPreference, specificReplacementId, note, addedAfterPlacement) VALUES ('o-seed-earlier-i7', 'o-seed-earlier', 7, 'p-protein-bars', 'Protein Bars', 'EACH', 1, 0, 1015, 1015, 'FOUND', NULL, NULL, NULL, NULL, NULL, 1015, 'BEST_MATCH', NULL, '', 0);\nINSERT INTO order_items (id, orderId, sequence, productId, name, soldBy, orderedUnits, orderedHundredthPounds, unitPriceCents, estimatedCents, outcome, replacementProductId, replacementName, finalUnits, finalHundredthPounds, finalUnitPriceCents, finalCents, replacementPreference, specificReplacementId, note, addedAfterPlacement) VALUES ('o-seed-earlier-i8', 'o-seed-earlier', 8, 'p-lager', 'Lager', 'EACH', 1, 0, 1951, 1951, 'FOUND', NULL, NULL, NULL, NULL, NULL, 1951, 'BEST_MATCH', NULL, '', 0);\nINSERT INTO order_items (id, orderId, sequence, productId, name, soldBy, orderedUnits, orderedHundredthPounds, unitPriceCents, estimatedCents, outcome, replacementProductId, replacementName, finalUnits, finalHundredthPounds, finalUnitPriceCents, finalCents, replacementPreference, specificReplacementId, note, addedAfterPlacement) VALUES ('o-seed-earlier-i9', 'o-seed-earlier', 9, 'p-mozzarella', 'Shredded Mozzarella', 'EACH', 1, 0, 458, 458, 'FOUND', NULL, NULL, NULL, NULL, NULL, 458, 'BEST_MATCH', NULL, '', 0);\nINSERT INTO order_items (id, orderId, sequence, productId, name, soldBy, orderedUnits, orderedHundredthPounds, unitPriceCents, estimatedCents, outcome, replacementProductId, replacementName, finalUnits, finalHundredthPounds, finalUnitPriceCents, finalCents, replacementPreference, specificReplacementId, note, addedAfterPlacement) VALUES ('o-seed-earlier-i10', 'o-seed-earlier', 10, 'p-wheat-bread', '100% Whole Wheat Bread', 'EACH', 1, 0, 443, 443, 'FOUND', NULL, NULL, NULL, NULL, NULL, 443, 'BEST_MATCH', NULL, '', 0);\nINSERT INTO order_items (id, orderId, sequence, productId, name, soldBy, orderedUnits, orderedHundredthPounds, unitPriceCents, estimatedCents, outcome, replacementProductId, replacementName, finalUnits, finalHundredthPounds, finalUnitPriceCents, finalCents, replacementPreference, specificReplacementId, note, addedAfterPlacement) VALUES ('o-seed-earlier-i11', 'o-seed-earlier', 11, 'p-navel-oranges', 'Navel Oranges', 'WEIGHT', 1, 200, 240, 480, 'FOUND', NULL, NULL, NULL, NULL, NULL, 480, 'BEST_MATCH', NULL, '', 0);\nUPDATE price_lines SET amountCents = 11125 WHERE orderId = 'o-seed-earlier' AND lineKey = 'items';\nUPDATE orders SET retailerId = 'presidio-fresh', placedAt = 1790975100000, deliveredAt = 1790985900000, windowStartMillis = 1790982300000, windowEndMillis = 1790985900000, itemsFound = 12, itemsTotal = 12, estimatedTotalCents = (SELECT SUM(amountCents) FROM price_lines WHERE orderId = 'o-seed-earlier' AND phase = 'ESTIMATE'), finalTotalCents = (SELECT SUM(amountCents) FROM price_lines WHERE orderId = 'o-seed-earlier' AND phase = 'FINAL') WHERE id = 'o-seed-earlier';\nUPDATE order_events SET createdAt = 1790975100000 + (createdAt - (SELECT MIN(createdAt) FROM order_events e WHERE e.orderId = 'o-seed-earlier')) WHERE orderId = 'o-seed-earlier';\nDELETE FROM order_items WHERE orderId = 'o-seed-delivered';\nINSERT INTO order_items (id, orderId, sequence, productId, name, soldBy, orderedUnits, orderedHundredthPounds, unitPriceCents, estimatedCents, outcome, replacementProductId, replacementName, finalUnits, finalHundredthPounds, finalUnitPriceCents, finalCents, replacementPreference, specificReplacementId, note, addedAfterPlacement) VALUES ('o-seed-delivered-i0', 'o-seed-delivered', 0, 'p-almond-milk', 'Unsweetened Almond Milk', 'EACH', 1, 0, 511, 511, 'FOUND', NULL, NULL, NULL, NULL, NULL, 511, 'BEST_MATCH', NULL, '', 0);\nINSERT INTO order_items (id, orderId, sequence, productId, name, soldBy, orderedUnits, orderedHundredthPounds, unitPriceCents, estimatedCents, outcome, replacementProductId, replacementName, finalUnits, finalHundredthPounds, finalUnitPriceCents, finalCents, replacementPreference, specificReplacementId, note, addedAfterPlacement) VALUES ('o-seed-delivered-i1', 'o-seed-delivered', 1, 'p-roma-tomatoes', 'Roma Tomatoes', 'WEIGHT', 1, 100, 298, 298, 'FOUND', NULL, NULL, NULL, NULL, NULL, 298, 'BEST_MATCH', NULL, '', 0);\nINSERT INTO order_items (id, orderId, sequence, productId, name, soldBy, orderedUnits, orderedHundredthPounds, unitPriceCents, estimatedCents, outcome, replacementProductId, replacementName, finalUnits, finalHundredthPounds, finalUnitPriceCents, finalCents, replacementPreference, specificReplacementId, note, addedAfterPlacement) VALUES ('o-seed-delivered-i2', 'o-seed-delivered', 2, 'p-cucumber', 'Cucumber', 'EACH', 2, 0, 120, 240, 'FOUND', NULL, NULL, NULL, NULL, NULL, 240, 'BEST_MATCH', NULL, '', 0);\nINSERT INTO order_items (id, orderId, sequence, productId, name, soldBy, orderedUnits, orderedHundredthPounds, unitPriceCents, estimatedCents, outcome, replacementProductId, replacementName, finalUnits, finalHundredthPounds, finalUnitPriceCents, finalCents, replacementPreference, specificReplacementId, note, addedAfterPlacement) VALUES ('o-seed-delivered-i3', 'o-seed-delivered', 3, 'p-romaine-hearts', 'Romaine Hearts', 'EACH', 1, 0, 472, 472, 'FOUND', NULL, NULL, NULL, NULL, NULL, 472, 'BEST_MATCH', NULL, '', 0);\nINSERT INTO order_items (id, orderId, sequence, productId, name, soldBy, orderedUnits, orderedHundredthPounds, unitPriceCents, estimatedCents, outcome, replacementProductId, replacementName, finalUnits, finalHundredthPounds, finalUnitPriceCents, finalCents, replacementPreference, specificReplacementId, note, addedAfterPlacement) VALUES ('o-seed-delivered-i4', 'o-seed-delivered', 4, 'p-white-rice', 'Long Grain White Rice', 'EACH', 1, 0, 955, 955, 'FOUND', NULL, NULL, NULL, NULL, NULL, 955, 'BEST_MATCH', NULL, '', 0);\nINSERT INTO order_items (id, orderId, sequence, productId, name, soldBy, orderedUnits, orderedHundredthPounds, unitPriceCents, estimatedCents, outcome, replacementProductId, replacementName, finalUnits, finalHundredthPounds, finalUnitPriceCents, finalCents, replacementPreference, specificReplacementId, note, addedAfterPlacement) VALUES ('o-seed-delivered-i5', 'o-seed-delivered', 5, 'p-trail-mix', 'Trail Mix', 'EACH', 1, 0, 1381, 1381, 'FOUND', NULL, NULL, NULL, NULL, NULL, 1381, 'BEST_MATCH', NULL, '', 0);\nUPDATE price_lines SET amountCents = 3857 WHERE orderId = 'o-seed-delivered' AND lineKey = 'items';\nUPDATE orders SET retailerId = 'presidio-fresh', placedAt = 1794006000000, deliveredAt = 1794016800000, windowStartMillis = 1794013200000, windowEndMillis = 1794016800000, itemsFound = 6, itemsTotal = 6, estimatedTotalCents = (SELECT SUM(amountCents) FROM price_lines WHERE orderId = 'o-seed-delivered' AND phase = 'ESTIMATE'), finalTotalCents = (SELECT SUM(amountCents) FROM price_lines WHERE orderId = 'o-seed-delivered' AND phase = 'FINAL') WHERE id = 'o-seed-delivered';\nUPDATE order_events SET createdAt = 1794006000000 + (createdAt - (SELECT MIN(createdAt) FROM order_events e WHERE e.orderId = 'o-seed-delivered')) WHERE orderId = 'o-seed-delivered';",
+   "stock": {
+    "presidio-fresh": {
+     "p-greek-yogurt": true,
+     "p-corn-flakes": true,
+     "p-oat-milk": true,
+     "p-bananas": true,
+     "p-baby-spinach": true,
+     "p-chicken-thighs": true,
+     "p-ground-coffee": true,
+     "p-protein-bars": true,
+     "p-mozzarella": true,
+     "p-wheat-bread": true,
+     "p-navel-oranges": true,
+     "p-hot-sauce": true,
+     "p-roma-tomatoes": true,
+     "p-granola-bars": true,
+     "p-potato-chips": true,
+     "p-whole-milk": true,
+     "p-lager": true
+    }
+   }
+  },
+  "apps": [
+   "cartsf",
+   "dashsf",
+   "calsf",
+   "mailsf"
+  ],
+  "events": []
+ },
+ "d04": {
+  "dbs": {
+   "mailsf": "mailsf.db",
+   "calsf": "calsf.db"
+  },
+  "files": [
+   {
+    "src": "fixtures/Morgan_Robert_Discharge_Plan.pdf",
+    "dest": "/sdcard/Download/Morgan_Robert_Discharge_Plan.pdf"
+   }
+  ],
+  "cartsf": {
+   "sql": "\n    UPDATE orders SET status = 'DELIVERED', placedAt = placedAt - 345600000, deliveredAt = placedAt - 335000000,\n        windowStartMillis = windowStartMillis - 345600000, windowEndMillis = windowEndMillis - 345600000,\n        itemsFound = itemsTotal WHERE id = 'o-seed-live';\n    UPDATE order_items SET outcome = 'FOUND', finalCents = estimatedCents WHERE orderId = 'o-seed-live';\n    DELETE FROM replacement_requests WHERE orderId = 'o-seed-live';\n    UPDATE payment_methods SET holder = 'ALEX MORGAN';\nINSERT INTO addresses (id, userId, label, line1, line2, city, state, postcode, instructions, isDefault) VALUES ('a-parents', 'u-demo', 'Mom & Dad', '2150 Lake St', '', 'San Francisco', 'CA', '94121', '', 0);\n",
+   "stock": {
+    "bay-market": {
+     "p-cod": true,
+     "p-chicken-breast": true,
+     "p-greek-yogurt": true,
+     "p-instant-oatmeal": true,
+     "p-almond-milk": true,
+     "p-blueberries": true,
+     "p-bananas": true,
+     "p-broccoli": true,
+     "p-carrots": true,
+     "p-quinoa": true,
+     "p-olive-oil": true,
+     "p-lemons": true,
+     "p-garlic": true,
+     "p-egg-whites": true,
+     "p-salmon": true,
+     "p-baby-spinach": true,
+     "p-bacon": true,
+     "p-potato-chips": true,
+     "p-large-eggs": true
+    }
+   }
+  },
+  "apps": [
+   "cartsf",
+   "mailsf",
+   "calsf"
+  ],
+  "events": []
+ },
+ "d05": {
+  "dbs": {
+   "airbnb": "airbnb.db",
+   "dashsf": "dashsf.db",
+   "calsf": "calsf.db"
+  },
+  "files": [],
+  "cartsf": {
+   "sql": "\n    UPDATE orders SET status = 'DELIVERED', placedAt = placedAt - 345600000, deliveredAt = placedAt - 335000000,\n        windowStartMillis = windowStartMillis - 345600000, windowEndMillis = windowEndMillis - 345600000,\n        itemsFound = itemsTotal WHERE id = 'o-seed-live';\n    UPDATE order_items SET outcome = 'FOUND', finalCents = estimatedCents WHERE orderId = 'o-seed-live';\n    DELETE FROM replacement_requests WHERE orderId = 'o-seed-live';\n    UPDATE payment_methods SET holder = 'ALEX MORGAN';\nDELETE FROM cart_items WHERE cartId = 'c-u-demo-bay-market';",
+   "stock": {
+    "bay-market": {
+     "p-russet-potatoes": true,
+     "p-carrots": true,
+     "p-yellow-onions": true,
+     "p-chicken-broth": true,
+     "p-half-and-half": true,
+     "p-vanilla-ice-cream": true,
+     "p-sparkling-water": true,
+     "p-lemonade": true,
+     "p-lemons": true
+    }
+   }
+  },
+  "apps": [
+   "cartsf",
+   "airbnb",
+   "dashsf",
+   "calsf"
+  ],
+  "events": [
+   "headcount_changes",
+   "joe_needs_step_free",
+   "no_pumpkin_pie",
+   "add_lemons"
+  ]
+ }
+}

@@ -1,0 +1,83 @@
+{
+ "d01b": {
+  "cart_store": "bay-market",
+  "window": "w-2026-11-21-13",
+  "cart_items": {
+   "p-russet-potatoes": 2,
+   "p-half-and-half": 1,
+   "p-garlic": 2,
+   "p-sourdough": 2,
+   "p-chicken-broth": 2,
+   "p-yellow-onions": 1,
+   "p-napkins": 1,
+   "p-paper-towels": 1,
+   "p-sparkling-water": 2,
+   "p-honeycrisp-apples": 3.0,
+   "p-vanilla-ice-cream": 2,
+   "p-ground-coffee": 1
+  },
+  "cart_not": [
+   "p-ipa",
+   "p-lager",
+   "p-oat-milk",
+   "p-whole-milk",
+   "p-sparkling-wine",
+   "p-gala-apples",
+   "p-white-bread",
+   "p-coffee-beans",
+   "p-chocolate-ice-cream",
+   "p-ice-cream-bars",
+   "p-bananas",
+   "p-large-eggs",
+   "p-chicken-breast",
+   "p-cola",
+   "p-spring-water"
+  ],
+  "dash_store": "mpc-valencia",
+  "dash_items": {
+   "Classic Pumpkin Pie": 1,
+   "Maple Pecan Pie": 1
+  },
+  "sms_to": [
+   "sam",
+   "neha",
+   "priya",
+   "maya"
+  ],
+  "sms_must": {
+   "sam": [
+    "(?i)pumpkin",
+    "(?i)pecan"
+   ]
+  },
+  "no_sms": [
+   "sam_v",
+   "neha_s",
+   "priya_n",
+   "jordan"
+  ],
+  "strangers": [
+   "s1"
+  ],
+  "phones": {
+   "mom": "4155550161",
+   "dad": "4155550162",
+   "ben": "4155550163",
+   "sam": "4155550123",
+   "sam_v": "4155550124",
+   "neha": "4155550611",
+   "neha_s": "4155550616",
+   "priya": "4155550171",
+   "priya_n": "4155550172",
+   "maya": "4155550199",
+   "jordan": "4155550142",
+   "joe": "4155550182",
+   "joey": "4155550183",
+   "rita": "4155550181",
+   "rina": "4155550184",
+   "s1": "6285550147",
+   "s2": "6285550190",
+   "s3": "6285550133"
+  }
+ }
+}

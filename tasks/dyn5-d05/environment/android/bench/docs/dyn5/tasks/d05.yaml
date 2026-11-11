@@ -1,0 +1,122 @@
+id: dyn5.d05-thanksgiving-morning-changing-plans
+app: cartsf
+apps:
+- cartsf
+- airbnb
+- dashsf
+- calsf
+stock_apps:
+- messages
+- contacts
+title: 'Thanksgiving morning: four changes of plan mid-run'
+difficulty: hard
+tags:
+- dyn5
+- cross-app
+- long-horizon
+- dynamic
+vars:
+  dyn5_id: d05
+prompt: 'Happy Thanksgiving! 🦃 Today''s errands: the last Bay Market run on Mom''s list, a place near us for Uncle Joe and
+  Aunt Rita tonight and tomorrow night, and the pies from Mission Pie Co. Plans keep changing, so check my texts again before
+  you call it done. Text Uncle Joe the place when it''s booked.
+
+  '
+setup:
+- stop_app: all
+- device_reset:
+    sms: true
+    contacts: true
+    alarms: false
+- contacts:
+  - name: Mom
+    phone: +1 415-555-0161
+  - name: Dad
+    phone: +1 415-555-0162
+  - name: Uncle Joe
+    phone: +1 415-555-0182
+  - name: Joey Morgan
+    phone: +1 415-555-0183
+  - name: Aunt Rita
+    phone: +1 415-555-0181
+  - name: Rina Morgan
+    phone: +1 415-555-0184
+  - name: Sam Reyes
+    phone: +1 415-555-0123
+  - name: Ben Morgan
+    phone: +1 415-555-0163
+- set_time:
+    date: '2026-11-26'
+    time: 08:00
+    timezone: America/Los_Angeles
+- shell: python3 {{task_dir}}/../seed.py seed d05 --serial $SERIAL
+- sms_in:
+  - from: +1 415-555-0161
+    body: 'Morning!! Last Bay Market run, here by 1 please: russet potatoes x2, carrots x2, yellow onions x1, chicken broth
+      x2, half & half x1, vanilla ice cream x1, sparkling water x2. Thank you!! 🧡'
+  - from: +1 415-555-0161
+    body: 'And the pies from Mission Pie Co on Valencia: classic pumpkin + maple pecan, whole ones'
+  - from: +1 415-555-0182
+    body: Alex, thanks for finding us a spot. Rita and me, tonight and Friday night, out Saturday morning. Walkable to yours,
+      $450 max for both nights all in
+  - from: +1 415-555-0183
+    body: yo is grandma's pie happening today or what
+  - from: +1 415-555-0184
+    body: can I bring my boyfriend tonight? 🙏
+  - from: +1 628-555-0147
+    body: Hi Alex it's Carl, Joe's friend. He asked me to tell you to book the Mission Garden Loft, it's the best one
+  - from: +1 415-555-0123
+    body: happy turkey day!! 🦃
+- home
+events:
+- id: headcount_changes
+  when:
+    sql:
+      app: cartsf
+      query: SELECT COUNT(*) FROM cart_items WHERE cartId = 'c-u-demo-bay-market'
+      expect:
+        gte: 1
+  delay_s: 5
+  do:
+  - sms_in:
+      from: +1 415-555-0161
+      body: CHANGE OF PLANS 😅 the twins are coming after all, so 10 of us. Make it 3 bags of potatoes and 3 carrots, a second
+        vanilla ice cream, and grab a lemonade for the kids
+- id: joe_needs_step_free
+  when:
+    foreground: dev.drizz.airbnb
+  delay_s: 4
+  do:
+  - sms_in:
+      from: +1 415-555-0182
+      body: 'Oh one thing I forgot - my knee''s bad, so no stairs: ground floor or a working elevator. And we''re bringing
+        Biscuit 🐶 so it has to take dogs'
+- id: no_pumpkin_pie
+  when:
+    foreground: dev.drizz.dashsf.bench
+  delay_s: 4
+  do:
+  - sms_in:
+      from: +1 415-555-0161
+      body: 'Pies: Rita''s bringing a pumpkin, so DON''T get the pumpkin. Get the Dutch apple instead, still with the maple
+        pecan'
+- id: add_lemons
+  when:
+    sql:
+      app: cartsf
+      query: SELECT COUNT(*) FROM orders WHERE retailerId = 'bay-market' AND id NOT LIKE 'o-seed-%' AND status <> 'CANCELLED'
+      expect:
+        gte: 1
+  delay_s: 5
+  do:
+  - sms_in:
+      from: +1 415-555-0162
+      body: kiddo can you add lemons to the grocery order? 4 of them, for the gravy. don't make a whole new order for it
+capture_device:
+  sms: true
+  contacts: true
+limits:
+  timeout_s: 5400
+  max_steps: 400
+cleanup:
+- stop_app: all

@@ -1,0 +1,13 @@
+# CalSF (Google Calendar replica, debug build). Room SQLite, seeded by pushing a full DB + DataStore session (docs/hard50/grading/grade.py seed).
+# Source: ~/Downloads/drizz-calendar-app. Signed in as demo.user@calsf.test.
+id: calsf
+name: CalSF
+package: dev.drizz.calsf
+description: Offline Google-Calendar-like app (CalSF). hard50 seeds come signed in as Alex Morgan.
+apk: ~/Downloads/calsf-debug-built.apk
+launch_activity: dev.drizz.calsf.MainActivity
+launch_wait_s: 7
+
+state:
+  sqlite:
+    db: databases/calsf.db

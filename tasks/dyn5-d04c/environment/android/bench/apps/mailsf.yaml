@@ -1,0 +1,13 @@
+# MailSF (Gmail replica, debug build). Room SQLite, seeded by pushing a full DB + DataStore session (docs/hard50/grading/grade.py seed).
+# Source: ~/Downloads/drizz-gmail-app. Signed in as demo.user@mailsf.test.
+id: mailsf
+name: MailSF
+package: dev.drizz.mailsf
+description: Offline Gmail-like mail app (MailSF). hard50 seeds come signed in as Alex Morgan.
+apk: ~/Downloads/mailsf-debug-built.apk
+launch_activity: dev.drizz.mailsf.MainActivity
+launch_wait_s: 7
+
+state:
+  sqlite:
+    db: databases/mailsf.db

@@ -1,0 +1,1 @@
+Mom's Thanksgiving shopping list is in my email, and she keeps changing her mind, as usual - get all of it from Bay Market in one order for this afternoon, and stay with the order until it's delivered in case the shopper needs anything. Text Mom when it's done.

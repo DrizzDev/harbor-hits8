@@ -1,0 +1,1 @@
+Coach signed off on New York! Book the team's flights and somewhere for all of us to stay - cheapest that actually follows coach's rules, the club account is nearly empty. Then text everyone the plan.

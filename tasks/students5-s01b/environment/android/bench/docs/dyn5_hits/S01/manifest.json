@@ -1,0 +1,20 @@
+{
+ "s01b": {
+  "dbs": {
+   "airbnb": "airbnb.db",
+   "mailsf": "mailsf.db",
+   "calsf": "calsf.db"
+  },
+  "files": [],
+  "flysf": {
+   "reset": true
+  },
+  "cartsf": null,
+  "apps": [
+   "flysf",
+   "airbnb",
+   "mailsf",
+   "calsf"
+  ]
+ }
+}

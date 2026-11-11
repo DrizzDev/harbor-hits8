@@ -1,0 +1,13 @@
+dev/
+converter/capture_tokens.json
+__pycache__/
+*.pyc
+.DS_Store
+jobs/
+.state/
+validation/
+conversion_report.json
+manifest.json
+converter/
+tasks/n4-1/
+tasks/n4-2/

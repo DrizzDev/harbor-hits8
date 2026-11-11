@@ -1,0 +1,90 @@
+id: dyn5.d01b-friendsgiving-two-sams
+app: cartsf
+apps:
+- cartsf
+- dashsf
+- mailsf
+- calsf
+stock_apps:
+- messages
+- contacts
+title: 'Friendsgiving: one Bay Market order, the right pies, the right people (v2: Sam points at the menu email)'
+difficulty: hard
+tags:
+- dyn5
+- cross-app
+- long-horizon
+vars:
+  dyn5_id: d01b
+prompt: 'Friendsgiving is at mine tonight 🦃 Get what people asked me to pick up in one Bay Market order, order the pies Sam
+  picked, and text everyone who asked for something what I got them.
+
+  '
+setup:
+- stop_app: all
+- device_reset:
+    sms: true
+    contacts: true
+    alarms: false
+- contacts:
+  - name: Sam Reyes
+    phone: +1 415-555-0123
+  - name: Sam Rivera
+    phone: +1 415-555-0124
+  - name: Neha Sharma
+    phone: +1 415-555-0611
+  - name: Neha Shah
+    phone: +1 415-555-0616
+  - name: Priya Nair
+    phone: +1 415-555-0171
+  - name: Priya Natarajan
+    phone: +1 415-555-0172
+  - name: Maya Chen
+    phone: +1 415-555-0199
+  - name: Jordan Park
+    phone: +1 415-555-0142
+  - name: Mom
+    phone: +1 415-555-0161
+- set_time:
+    date: '2026-11-21'
+    time: 09:00
+    timezone: America/Los_Angeles
+- shell: python3 {{task_dir}}/../seed.py seed d01b --serial $SERIAL
+- sms_in:
+  - from: +1 415-555-0123
+    body: 'PIES ARE ON YOU this year 😤 my picks: Mission Pie Co, the one on Valencia not the Fillmore one. The classic pumpkin
+      and the maple pecan. WHOLE pies pls, not slices. oh and the final menu''s in my email, there''s something on there for
+      you too'
+  - from: +1 415-555-0199
+    body: I'm doing the table. we're out of napkins AND paper towels. also nobody's home till 1, so the groceries have to
+      come after 1 but before 3 (people get here at 5)
+  - from: +1 415-555-0124
+    body: hey Alex! is the friendsgiving thing tonight? grab me a 6 pack of the hazy IPA, I'll venmo u 🍻
+  - from: +1 415-555-0611
+    body: mashed potatoes are on me! I need 2 bags of russets and the half & half (NOT whole milk). and garlic, 2 heads
+  - from: +1 415-555-0616
+    body: omg is it friendsgiving at yours?? can I come and bring my roommate? she'd need oat milk lol
+  - from: +1 415-555-0171
+    body: stuffing team reporting 🫡 need 2 sourdough loaves (the loaf, not sandwich bread), 2 chicken broths and a bag of
+      yellow onions
+  - from: +1 415-555-0172
+    body: Hi Alex, it's Priya from 4B - building water is off 10 to noon today for the boiler, just fyi!
+  - from: +1 415-555-0142
+    body: so so sorry, I can't make it tonight 😭 have the best time
+  - from: +1 628-555-0147
+    body: hey it's Sam, new number! change of plan on the pies - get the chocolate pecan instead of the maple one
+  - from: +1 415-555-0199
+    body: oh and sparkling - the Clearwell 12-pack, 2 of them. NOT the sparkling wine, wine's covered
+  - from: +1 415-555-0123
+    body: and honeycrisp apples for my cider, 3 lb (honeycrisp, not gala!!) + 2 tubs of vanilla ice cream for the pies
+  - from: +1 415-555-0611
+    body: wait is Jordan still coming? doesn't matter, still 2 bags
+- home
+capture_device:
+  sms: true
+  contacts: true
+limits:
+  timeout_s: 5400
+  max_steps: 400
+cleanup:
+- stop_app: all

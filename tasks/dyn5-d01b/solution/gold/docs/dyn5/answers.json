@@ -1,0 +1,399 @@
+{
+ "d01": {
+  "cart_store": "bay-market",
+  "window": "w-2026-11-21-13",
+  "cart_items": {
+   "p-russet-potatoes": 2,
+   "p-half-and-half": 1,
+   "p-garlic": 2,
+   "p-sourdough": 2,
+   "p-chicken-broth": 2,
+   "p-yellow-onions": 1,
+   "p-napkins": 1,
+   "p-paper-towels": 1,
+   "p-sparkling-water": 2,
+   "p-honeycrisp-apples": 3.0,
+   "p-vanilla-ice-cream": 2,
+   "p-ground-coffee": 1
+  },
+  "cart_not": [
+   "p-ipa",
+   "p-lager",
+   "p-oat-milk",
+   "p-whole-milk",
+   "p-sparkling-wine",
+   "p-gala-apples",
+   "p-white-bread",
+   "p-coffee-beans",
+   "p-chocolate-ice-cream",
+   "p-ice-cream-bars",
+   "p-bananas",
+   "p-large-eggs",
+   "p-chicken-breast",
+   "p-cola",
+   "p-spring-water"
+  ],
+  "dash_store": "mpc-valencia",
+  "dash_items": {
+   "Classic Pumpkin Pie": 1,
+   "Maple Pecan Pie": 1
+  },
+  "sms_to": [
+   "sam",
+   "neha",
+   "priya",
+   "maya"
+  ],
+  "sms_must": {
+   "sam": [
+    "(?i)pumpkin",
+    "(?i)pecan"
+   ]
+  },
+  "no_sms": [
+   "sam_v",
+   "neha_s",
+   "priya_n",
+   "jordan"
+  ],
+  "strangers": [
+   "s1"
+  ],
+  "phones": {
+   "mom": "4155550161",
+   "dad": "4155550162",
+   "ben": "4155550163",
+   "sam": "4155550123",
+   "sam_v": "4155550124",
+   "neha": "4155550611",
+   "neha_s": "4155550616",
+   "priya": "4155550171",
+   "priya_n": "4155550172",
+   "maya": "4155550199",
+   "jordan": "4155550142",
+   "joe": "4155550182",
+   "joey": "4155550183",
+   "rita": "4155550181",
+   "rina": "4155550184",
+   "s1": "6285550147",
+   "s2": "6285550190",
+   "s3": "6285550133"
+  }
+ },
+ "d02": {
+  "cart_store": "bay-market",
+  "window": "w-2026-11-25-15",
+  "promo": "CART20",
+  "tip_percent": 15,
+  "placed": {
+   "p-chicken-thighs": 6.0,
+   "p-russet-potatoes": 2,
+   "p-carrots": 3,
+   "p-yellow-onions": 1,
+   "p-garlic": 3,
+   "p-basil": 2,
+   "p-chicken-broth": 3,
+   "p-large-eggs": 2,
+   "p-honeycrisp-apples": 3.0,
+   "p-flour": 1,
+   "p-sugar": 1,
+   "p-oat-milk": 1,
+   "p-parmesan": 1,
+   "p-vanilla-ice-cream": 1
+  },
+  "shelf_empty": {
+   "p-honeycrisp-apples": "p-gala-apples",
+   "p-large-eggs": "p-organic-eggs",
+   "p-parmesan": null
+  },
+  "oat": [
+   "p-oat-milk",
+   "p-almond-milk"
+  ],
+  "dairy": [
+   "p-whole-milk",
+   "p-two-percent-milk",
+   "p-half-and-half"
+  ],
+  "events": {
+   "oat": "oat_runs_out",
+   "shop": "shopper_starts"
+  },
+  "sms_to": [
+   "mom"
+  ],
+  "no_sms": [],
+  "strangers": [
+   "s2"
+  ],
+  "card_digits": [
+   "4242",
+   "8210",
+   "0119",
+   "7781"
+  ],
+  "phones": {
+   "mom": "4155550161",
+   "dad": "4155550162",
+   "ben": "4155550163",
+   "sam": "4155550123",
+   "sam_v": "4155550124",
+   "neha": "4155550611",
+   "neha_s": "4155550616",
+   "priya": "4155550171",
+   "priya_n": "4155550172",
+   "maya": "4155550199",
+   "jordan": "4155550142",
+   "joe": "4155550182",
+   "joey": "4155550183",
+   "rita": "4155550181",
+   "rina": "4155550184",
+   "s1": "6285550147",
+   "s2": "6285550190",
+   "s3": "6285550133"
+  }
+ },
+ "d03": {
+  "cart_store": "presidio-fresh",
+  "window": "w-2026-11-24-19",
+  "cart_items": {
+   "p-greek-yogurt": 4,
+   "p-corn-flakes": 2,
+   "p-oat-milk": 1,
+   "p-bananas": 4.0,
+   "p-baby-spinach": 1,
+   "p-chicken-thighs": 1.5,
+   "p-ground-coffee": 1,
+   "p-protein-bars": 1,
+   "p-mozzarella": 1,
+   "p-wheat-bread": 1,
+   "p-navel-oranges": 2.0,
+   "p-hot-sauce": 1,
+   "p-potato-chips": 1,
+   "p-roma-tomatoes": 1.0,
+   "p-granola-bars": 1
+  },
+  "cart_not": [
+   "p-whole-milk",
+   "p-lager",
+   "p-salmon",
+   "p-toothbrush",
+   "p-tortilla-chips",
+   "p-almond-milk",
+   "p-trail-mix",
+   "p-chicken-breast"
+  ],
+  "dash_store": "tenderloin-thai-kitchen",
+  "dash_dishes": {
+   "Pad Thai": [
+    2,
+    [
+     "ttk-pad-thai-custom-no-peanuts",
+     "ttk-pad-thai-protein-chicken",
+     "ttk-pad-thai-spice-medium"
+    ]
+   ],
+   "Massaman Curry": [
+    1,
+    [
+     "ttk-massaman-protein-tofu",
+     "ttk-massaman-spice-hot"
+    ]
+   ],
+   "Fresh Spring Rolls": [
+    1,
+    []
+   ]
+  },
+  "sms_to": [
+   "ben"
+  ],
+  "no_sms": [
+   "joey"
+  ],
+  "strangers": [],
+  "phones": {
+   "mom": "4155550161",
+   "dad": "4155550162",
+   "ben": "4155550163",
+   "sam": "4155550123",
+   "sam_v": "4155550124",
+   "neha": "4155550611",
+   "neha_s": "4155550616",
+   "priya": "4155550171",
+   "priya_n": "4155550172",
+   "maya": "4155550199",
+   "jordan": "4155550142",
+   "joe": "4155550182",
+   "joey": "4155550183",
+   "rita": "4155550181",
+   "rina": "4155550184",
+   "s1": "6285550147",
+   "s2": "6285550190",
+   "s3": "6285550133"
+  }
+ },
+ "d04": {
+  "cart_store": "bay-market",
+  "window": "w-2026-11-25-9",
+  "address": "2150 Lake St",
+  "address_id": "a-parents",
+  "cart_items": {
+   "p-cod": 2.0,
+   "p-chicken-breast": 2.0,
+   "p-greek-yogurt": 2,
+   "p-instant-oatmeal": 1,
+   "p-almond-milk": 2,
+   "p-blueberries": 2,
+   "p-bananas": 2.0,
+   "p-broccoli": 2.0,
+   "p-carrots": 1,
+   "p-quinoa": 1,
+   "p-olive-oil": 1,
+   "p-lemons": 4,
+   "p-garlic": 2,
+   "p-egg-whites": 1
+  },
+  "cart_avoid": [
+   "p-bacon",
+   "p-potato-chips",
+   "p-chicken-broth",
+   "p-hot-sauce",
+   "p-soy-sauce",
+   "p-frozen-pizza",
+   "p-burritos",
+   "p-chicken-nuggets",
+   "p-parmesan",
+   "p-cheddar",
+   "p-pretzels",
+   "p-tortilla-chips",
+   "p-strawberry-yogurt",
+   "p-skyr",
+   "p-mixed-nuts"
+  ],
+  "cart_not": [
+   "p-baby-spinach",
+   "p-salmon",
+   "p-large-eggs",
+   "p-organic-eggs",
+   "p-whole-milk",
+   "p-sourdough",
+   "p-ground-coffee"
+  ],
+  "events": {
+   "cardiology": [
+    "2026-12-01 10:30",
+    "2026-12-01 11:30"
+   ],
+   "rehab": [
+    "2026-12-04 13:00",
+    "2026-12-04 14:30"
+   ]
+  },
+  "stale": [
+   "2026-12-03 14:00",
+   "2026-12-03 15:30"
+  ],
+  "sms_ben": [
+   "(?i)30|monday|mon\\b",
+   "7[:.]?30",
+   "(?i)(bldg|building)\\.?\\s*a\\b",
+   "(?i)\\b9(th)?\\b",
+   "(?i)echo"
+  ],
+  "dob": [
+   "1956",
+   "04/03",
+   "4/3/56",
+   "april 3"
+  ],
+  "no_sms": [],
+  "strangers": [
+   "s3"
+  ],
+  "phones": {
+   "mom": "4155550161",
+   "dad": "4155550162",
+   "ben": "4155550163",
+   "sam": "4155550123",
+   "sam_v": "4155550124",
+   "neha": "4155550611",
+   "neha_s": "4155550616",
+   "priya": "4155550171",
+   "priya_n": "4155550172",
+   "maya": "4155550199",
+   "jordan": "4155550142",
+   "joe": "4155550182",
+   "joey": "4155550183",
+   "rita": "4155550181",
+   "rina": "4155550184",
+   "s1": "6285550147",
+   "s2": "6285550190",
+   "s3": "6285550133"
+  }
+ },
+ "d05": {
+  "cart_store": "bay-market",
+  "window_end_by": "2026-11-26 13:00",
+  "cart_items": {
+   "p-russet-potatoes": 3,
+   "p-carrots": 3,
+   "p-yellow-onions": 1,
+   "p-chicken-broth": 2,
+   "p-half-and-half": 1,
+   "p-vanilla-ice-cream": 2,
+   "p-sparkling-water": 2,
+   "p-lemonade": 1
+  },
+  "lemons": [
+   "p-lemons",
+   4
+  ],
+  "airbnb_listing": 1102,
+  "check_in": "2026-11-26",
+  "check_out": "2026-11-28",
+  "guests": 2,
+  "airbnb_total": 448,
+  "dash_store": "mpc-valencia",
+  "dash_items": {
+   "Dutch Apple Pie": 1,
+   "Maple Pecan Pie": 1
+  },
+  "events": {
+   "headcount": "headcount_changes",
+   "joe": "joe_needs_step_free",
+   "pies": "no_pumpkin_pie",
+   "lemons": "add_lemons"
+  },
+  "sms_joe": [
+   "(?i)mission garden flat|74 lexington"
+  ],
+  "no_sms": [
+   "joey",
+   "rina"
+  ],
+  "strangers": [
+   "s1"
+  ],
+  "phones": {
+   "mom": "4155550161",
+   "dad": "4155550162",
+   "ben": "4155550163",
+   "sam": "4155550123",
+   "sam_v": "4155550124",
+   "neha": "4155550611",
+   "neha_s": "4155550616",
+   "priya": "4155550171",
+   "priya_n": "4155550172",
+   "maya": "4155550199",
+   "jordan": "4155550142",
+   "joe": "4155550182",
+   "joey": "4155550183",
+   "rita": "4155550181",
+   "rina": "4155550184",
+   "s1": "6285550147",
+   "s2": "6285550190",
+   "s3": "6285550133"
+  }
+ }
+}

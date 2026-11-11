@@ -1,0 +1,80 @@
+id: students5.s04d-london-summit-pamphlet
+app: flysf
+apps:
+- flysf
+- mailsf
+stock_apps:
+- messages
+- contacts
+- files
+title: 'The London summit pamphlet: tell the club, book the delegates (v4: Neha Shah, Tomas and flight number clues)'
+difficulty: hard
+tags:
+- students5
+- cross-app
+- long-horizon
+vars:
+  students5_id: s04d
+prompt: 'The GSRS summit pamphlet is in my Downloads. Pass on what the club needs to know and book our delegates'' flights
+  - the cheapest that follows the pamphlet''s rules.
+
+  '
+setup:
+- stop_app: all
+- device_reset:
+    sms: true
+    contacts: true
+    alarms: false
+- contacts:
+  - name: Neha Sharma
+    phone: +1 415-555-0611
+  - name: Kabir Mehta
+    phone: +1 415-555-0612
+  - name: Tomas Alvarez
+    phone: +1 415-555-0613
+  - name: Jia Li
+    phone: +1 415-555-0614
+  - name: Ethan Brooks
+    phone: +1 415-555-0615
+  - name: Neha Shah
+    phone: +1 415-555-0616
+  - name: Dana Okafor
+    phone: +1 415-555-0650
+  - name: Maya Chen
+    phone: +1 415-555-0199
+  - name: Sam Reyes
+    phone: +1 415-555-0123
+- set_time:
+    date: '2026-10-20'
+    time: 09:00
+    timezone: America/Los_Angeles
+- shell: python3 {{task_dir}}/../seed.py seed s04d --serial $SERIAL
+- sms_in:
+  - from: +1 415-555-0611
+    body: 'omg London?? my passport: US, no. 584920117, expires 14 Aug 2031. DOB 14/03/2005'
+  - from: +1 415-555-0614
+    body: 'passport details for the summit: Chinese passport E73219964, valid until 1 Nov 2029, born 30 May 2006 🇬🇧✨'
+  - from: +1 415-555-0612
+    body: Indian passport Z4471902, expiry 10 Mar 2027, DOB 2 Sep 2004
+  - from: +1 415-555-0615
+    body: wait who's going to London? 👀
+  - from: +1 415-555-0612
+    body: 'update: just picked up my RENEWED passport 🎉 new no. Z8810354, expires 30 Sep 2036. use this one, the old one''s
+      cancelled'
+  - from: +1 415-555-0613
+    body: are we still meeting in the robotics lab tonight? 🤖
+  - from: +1 415-555-0616
+    body: congrats on the summit thing!! wish I'd actually joined the robotics club when you asked 😅
+  - from: +1 415-555-0650
+    body: Saw the GSRS email - great news. Book the three delegates by the pamphlet's rules, the grant only refunds what they
+      allow. And make sure the whole club hears about the poster hall. And text the three delegates their flight numbers once
+      they're booked.
+- home
+capture_device:
+  sms: true
+  contacts: true
+limits:
+  timeout_s: 5400
+  max_steps: 400
+cleanup:
+- stop_app: all

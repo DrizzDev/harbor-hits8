@@ -1,0 +1,1 @@
+Dad's home from the hospital 🙏 Go through his discharge plan in my Downloads and the family's voice notes, then get his first week of groceries delivered to my parents', put the appointments I'm taking him to in my calendar, and tell Ben what he's covering. The delivery to my parents' is a one-off.

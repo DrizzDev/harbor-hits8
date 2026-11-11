@@ -1,0 +1,450 @@
+note: Generated for reading from the task YAML, manifest.json and build/*.db. The task YAML and seed.py are what
+  the bench runs.
+task: dyn5.d01b-friendsgiving-two-sams
+seed_target: d01b
+device_time:
+  date: '2026-11-21'
+  time: 09:00
+  timezone: America/Los_Angeles
+device_reset:
+  sms: true
+  contacts: true
+  alarms: false
+contacts:
+- name: Sam Reyes
+  phone: +1 415-555-0123
+- name: Sam Rivera
+  phone: +1 415-555-0124
+- name: Neha Sharma
+  phone: +1 415-555-0611
+- name: Neha Shah
+  phone: +1 415-555-0616
+- name: Priya Nair
+  phone: +1 415-555-0171
+- name: Priya Natarajan
+  phone: +1 415-555-0172
+- name: Maya Chen
+  phone: +1 415-555-0199
+- name: Jordan Park
+  phone: +1 415-555-0142
+- name: Mom
+  phone: +1 415-555-0161
+texts_in_inbox:
+- from: +1 415-555-0123
+  body: 'PIES ARE ON YOU this year 😤 my picks: Mission Pie Co, the one on Valencia not the Fillmore one. The classic
+    pumpkin and the maple pecan. WHOLE pies pls, not slices. oh and the final menu''s in my email, there''s something
+    on there for you too'
+- from: +1 415-555-0199
+  body: I'm doing the table. we're out of napkins AND paper towels. also nobody's home till 1, so the groceries
+    have to come after 1 but before 3 (people get here at 5)
+- from: +1 415-555-0124
+  body: hey Alex! is the friendsgiving thing tonight? grab me a 6 pack of the hazy IPA, I'll venmo u 🍻
+- from: +1 415-555-0611
+  body: mashed potatoes are on me! I need 2 bags of russets and the half & half (NOT whole milk). and garlic, 2
+    heads
+- from: +1 415-555-0616
+  body: omg is it friendsgiving at yours?? can I come and bring my roommate? she'd need oat milk lol
+- from: +1 415-555-0171
+  body: stuffing team reporting 🫡 need 2 sourdough loaves (the loaf, not sandwich bread), 2 chicken broths and a
+    bag of yellow onions
+- from: +1 415-555-0172
+  body: Hi Alex, it's Priya from 4B - building water is off 10 to noon today for the boiler, just fyi!
+- from: +1 415-555-0142
+  body: so so sorry, I can't make it tonight 😭 have the best time
+- from: +1 628-555-0147
+  body: hey it's Sam, new number! change of plan on the pies - get the chocolate pecan instead of the maple one
+- from: +1 415-555-0199
+  body: oh and sparkling - the Clearwell 12-pack, 2 of them. NOT the sparkling wine, wine's covered
+- from: +1 415-555-0123
+  body: and honeycrisp apples for my cider, 3 lb (honeycrisp, not gala!!) + 2 tubs of vanilla ice cream for the
+    pies
+- from: +1 415-555-0611
+  body: wait is Jordan still coming? doesn't matter, still 2 bags
+triggers_during_run: []
+files_pushed_to_device: []
+cartsf:
+  how: 'No built database: seed.py resets CartSF through its data API (simulator QUIET, clock offset 0), pins the
+    stock below, then runs the SQL. seed_snapshot/cartsf.before.db is that state as saved by a real trial.'
+  stock_pins:
+    bay-market:
+      p-russet-potatoes: true
+      p-half-and-half: true
+      p-garlic: true
+      p-sourdough: true
+      p-chicken-broth: true
+      p-yellow-onions: true
+      p-napkins: true
+      p-paper-towels: true
+      p-sparkling-water: true
+      p-honeycrisp-apples: true
+      p-vanilla-ice-cream: true
+      p-ground-coffee: true
+      p-ipa: true
+      p-oat-milk: true
+      p-sparkling-wine: true
+      p-gala-apples: true
+  sql: "\n    UPDATE orders SET status = 'DELIVERED', placedAt = placedAt - 345600000, deliveredAt = placedAt -\
+    \ 335000000,\n        windowStartMillis = windowStartMillis - 345600000, windowEndMillis = windowEndMillis -\
+    \ 345600000,\n        itemsFound = itemsTotal WHERE id = 'o-seed-live';\n    UPDATE order_items SET outcome\
+    \ = 'FOUND', finalCents = estimatedCents WHERE orderId = 'o-seed-live';\n    DELETE FROM replacement_requests\
+    \ WHERE orderId = 'o-seed-live';\n    UPDATE payment_methods SET holder = 'ALEX MORGAN';\n"
+databases:
+  mailsf:
+    file: build/d01b/mailsf.db
+    sha256: 9c534acb25d5505c43db14575c09d9ed79ed1eb78aa7665b81d0f55a7be2bf33
+    rows:
+      users: 1
+      contacts: 24
+      labels: 11
+      threads: 8
+      messages: 8
+      message_recipients: 11
+      message_labels: 10
+      thread_labels: 10
+      attachments: 0
+      audit_log: 0
+  calsf:
+    file: build/d01b/calsf.db
+    sha256: 2e70820ffd84890cd26dda7d682f900f4d9739ccee3065963ff425bad88b10e2
+    rows:
+      users: 1
+      contacts: 10
+      calendars: 6
+      event_series: 4
+      events: 39
+      event_guests: 106
+      reminders: 25
+      event_attachments: 0
+      tasks: 0
+      busy_blocks: 0
+      audit_log: 0
+  dashsf:
+    file: build/d01b/dashsf.db
+    sha256: fe52a299c50eb75d4a6f5ba393874651993661b5ab31883426f420bf68d8fe7a
+    rows:
+      users: 1
+      addresses: 2
+      payment_methods: 2
+      stores: 45
+      menu_items: 289
+      option_groups: 114
+      item_options: 369
+      promo_codes: 6
+      dashers: 8
+      cart_items: 0
+      favorites: 0
+      recent_searches: 0
+      orders: 8
+      order_items: 18
+      order_events: 60
+      payment_transactions: 8
+      support_tickets: 0
+      credit_ledger: 0
+      app_settings: 13
+      audit_log: 0
+      item_components: 0
+      store_offers: 0
+email:
+- from: Linus Carver <linus@dockyard.dev>
+  subject: Dockyard status page moved
+  sent: Mon 12 Oct 2026 11:30 PT
+  body: 'Heads up: status.dockyard.dev is now the canonical status page.'
+- from: Grace Liu <grace.liu@northwind.co>
+  subject: Open enrolment closes Nov 13
+  sent: Wed 14 Oct 2026 09:00 PT
+  body: 'Reminder: benefits open enrolment closes Friday, November 13. Nothing to do if you are keeping your plan.'
+- from: Northwind IT <it-help@northwind.co>
+  subject: Scheduled maintenance Saturday 10/24
+  sent: Fri 16 Oct 2026 15:00 PT
+  body: VPN will be unavailable Saturday 10/24 from 22:00 to 23:30 PT. No action needed.
+- from: Maya Chen <maya.chen@gmail.com>
+  subject: Lunch Thursday?
+  sent: Sun 18 Oct 2026 19:40 PT
+  body: Free for dim sum Thursday? Mom says hi.
+- from: The Weekly Byte <digest@weeklybyte.news>
+  subject: 'The Weekly Byte #121: what shipped this week'
+  sent: Mon 19 Oct 2026 06:00 PT
+  body: Ten links worth your time this week. 1) Compose previews 2) SQLite tricks ...
+- from: Maya Thompson <maya.thompson@northwind.co>
+  subject: Standup notes — Monday
+  sent: Mon 19 Oct 2026 10:05 PT
+  body: 'Shipped: onboarding v2 behind a flag. Blocked: nothing. Next: perf pass on search.'
+- from: Sam Reyes <sam.reyes@mailbox.example>
+  subject: Friendsgiving menu (FINAL, promise)
+  sent: Thu 19 Nov 2026 21:04 PT
+  body: 'Hi all!
+
+
+    Final plan for Saturday at Alex''s (doors 5pm):
+
+
+    Alex - hosting, the turkey (already picked up from the butcher), drinks, and coffee for after. Alex: ONE bag
+    of ground coffee, not beans, you gave the grinder away.
+
+    Neha - mashed potatoes
+
+    Priya - stuffing
+
+    Sam (me) - pies. Alex is ordering them since I''m working till 4, I''ll text my picks.
+
+    Maya - table + sparkling
+
+    Jordan - cranberry sauce
+
+
+    Everyone text Alex what you need picked up so it''s one grocery order.
+
+
+    Sam'
+- from: Sam Rivera <sam.rivera@northwind.example>
+  subject: Q4 deck + Thanksgiving?
+  sent: Fri 20 Nov 2026 16:40 PT
+  body: Hey Alex, deck looks good, two comments on slide 9. Unrelated - doing anything for Thanksgiving? Sam R.
+calendar:
+- title: Gym
+  start: Mon 19 Oct 2026 07:00 PT
+  end: Mon 19 Oct 2026 08:00 PT
+  location: ''
+  status: CONFIRMED
+- title: Team standup
+  start: Mon 19 Oct 2026 09:30 PT
+  end: Mon 19 Oct 2026 09:45 PT
+  location: ''
+  status: CONFIRMED
+- title: Team standup
+  start: Tue 20 Oct 2026 09:30 PT
+  end: Tue 20 Oct 2026 09:45 PT
+  location: ''
+  status: CONFIRMED
+- title: Gym
+  start: Wed 21 Oct 2026 07:00 PT
+  end: Wed 21 Oct 2026 08:00 PT
+  location: ''
+  status: CONFIRMED
+- title: Team standup
+  start: Wed 21 Oct 2026 09:30 PT
+  end: Wed 21 Oct 2026 09:45 PT
+  location: ''
+  status: CONFIRMED
+- title: Team standup
+  start: Thu 22 Oct 2026 09:30 PT
+  end: Thu 22 Oct 2026 09:45 PT
+  location: ''
+  status: CONFIRMED
+- title: Gym
+  start: Fri 23 Oct 2026 07:00 PT
+  end: Fri 23 Oct 2026 08:00 PT
+  location: ''
+  status: CONFIRMED
+- title: Team standup
+  start: Fri 23 Oct 2026 09:30 PT
+  end: Fri 23 Oct 2026 09:45 PT
+  location: ''
+  status: CONFIRMED
+- title: Gym
+  start: Mon 26 Oct 2026 07:00 PT
+  end: Mon 26 Oct 2026 08:00 PT
+  location: ''
+  status: CONFIRMED
+- title: Team standup
+  start: Mon 26 Oct 2026 09:30 PT
+  end: Mon 26 Oct 2026 09:45 PT
+  location: ''
+  status: CONFIRMED
+- title: Team standup
+  start: Tue 27 Oct 2026 09:30 PT
+  end: Tue 27 Oct 2026 09:45 PT
+  location: ''
+  status: CONFIRMED
+- title: Gym
+  start: Wed 28 Oct 2026 07:00 PT
+  end: Wed 28 Oct 2026 08:00 PT
+  location: ''
+  status: CONFIRMED
+- title: Team standup
+  start: Wed 28 Oct 2026 09:30 PT
+  end: Wed 28 Oct 2026 09:45 PT
+  location: ''
+  status: CONFIRMED
+- title: Team standup
+  start: Thu 29 Oct 2026 09:30 PT
+  end: Thu 29 Oct 2026 09:45 PT
+  location: ''
+  status: CONFIRMED
+- title: Gym
+  start: Fri 30 Oct 2026 07:00 PT
+  end: Fri 30 Oct 2026 08:00 PT
+  location: ''
+  status: CONFIRMED
+- title: Team standup
+  start: Fri 30 Oct 2026 09:30 PT
+  end: Fri 30 Oct 2026 09:45 PT
+  location: ''
+  status: CONFIRMED
+- title: Gym
+  start: Mon 02 Nov 2026 07:00 PT
+  end: Mon 02 Nov 2026 08:00 PT
+  location: ''
+  status: CONFIRMED
+- title: Team standup
+  start: Mon 02 Nov 2026 09:30 PT
+  end: Mon 02 Nov 2026 09:45 PT
+  location: ''
+  status: CONFIRMED
+- title: Team standup
+  start: Tue 03 Nov 2026 09:30 PT
+  end: Tue 03 Nov 2026 09:45 PT
+  location: ''
+  status: CONFIRMED
+- title: Gym
+  start: Wed 04 Nov 2026 07:00 PT
+  end: Wed 04 Nov 2026 08:00 PT
+  location: ''
+  status: CONFIRMED
+- title: Team standup
+  start: Wed 04 Nov 2026 09:30 PT
+  end: Wed 04 Nov 2026 09:45 PT
+  location: ''
+  status: CONFIRMED
+- title: Team standup
+  start: Thu 05 Nov 2026 09:30 PT
+  end: Thu 05 Nov 2026 09:45 PT
+  location: ''
+  status: CONFIRMED
+- title: Gym
+  start: Fri 06 Nov 2026 07:00 PT
+  end: Fri 06 Nov 2026 08:00 PT
+  location: ''
+  status: CONFIRMED
+- title: Team standup
+  start: Fri 06 Nov 2026 09:30 PT
+  end: Fri 06 Nov 2026 09:45 PT
+  location: ''
+  status: CONFIRMED
+- title: Gym
+  start: Mon 09 Nov 2026 07:00 PT
+  end: Mon 09 Nov 2026 08:00 PT
+  location: ''
+  status: CONFIRMED
+- title: Team standup
+  start: Mon 09 Nov 2026 09:30 PT
+  end: Mon 09 Nov 2026 09:45 PT
+  location: ''
+  status: CONFIRMED
+- title: Team standup
+  start: Tue 10 Nov 2026 09:30 PT
+  end: Tue 10 Nov 2026 09:45 PT
+  location: ''
+  status: CONFIRMED
+- title: Gym
+  start: Wed 11 Nov 2026 07:00 PT
+  end: Wed 11 Nov 2026 08:00 PT
+  location: ''
+  status: CONFIRMED
+- title: Team standup
+  start: Wed 11 Nov 2026 09:30 PT
+  end: Wed 11 Nov 2026 09:45 PT
+  location: ''
+  status: CONFIRMED
+- title: Team standup
+  start: Thu 12 Nov 2026 09:30 PT
+  end: Thu 12 Nov 2026 09:45 PT
+  location: ''
+  status: CONFIRMED
+- title: Gym
+  start: Fri 13 Nov 2026 07:00 PT
+  end: Fri 13 Nov 2026 08:00 PT
+  location: ''
+  status: CONFIRMED
+- title: Team standup
+  start: Fri 13 Nov 2026 09:30 PT
+  end: Fri 13 Nov 2026 09:45 PT
+  location: ''
+  status: CONFIRMED
+- title: Team standup
+  start: Mon 16 Nov 2026 09:30 PT
+  end: Mon 16 Nov 2026 09:45 PT
+  location: ''
+  status: CONFIRMED
+- title: Team standup
+  start: Tue 17 Nov 2026 09:30 PT
+  end: Tue 17 Nov 2026 09:45 PT
+  location: ''
+  status: CONFIRMED
+- title: Team standup
+  start: Wed 18 Nov 2026 09:30 PT
+  end: Wed 18 Nov 2026 09:45 PT
+  location: ''
+  status: CONFIRMED
+- title: Team standup
+  start: Thu 19 Nov 2026 09:30 PT
+  end: Thu 19 Nov 2026 09:45 PT
+  location: ''
+  status: CONFIRMED
+- title: Team standup
+  start: Fri 20 Nov 2026 09:30 PT
+  end: Fri 20 Nov 2026 09:45 PT
+  location: ''
+  status: CONFIRMED
+- title: Climbing w/ Sam R.
+  start: Sat 21 Nov 2026 10:30 PT
+  end: Sat 21 Nov 2026 12:00 PT
+  location: Mission Cliffs
+  status: CONFIRMED
+- title: Friendsgiving 🦃 at mine
+  start: Sat 21 Nov 2026 17:00 PT
+  end: Sat 21 Nov 2026 22:00 PT
+  location: 742 Valencia St, Apt 3, San Francisco
+  status: CONFIRMED
+dashsf:
+  addresses:
+  - label: HOME
+    street: 742 Valencia St
+    apt: Apt 3
+    zip: '94110'
+    dropoffInstructions: Gate code 1947, second buzzer.
+  - label: WORK
+    street: 415 Mission St
+    apt: Floor 22
+    zip: '94105'
+    dropoffInstructions: Front desk in the main lobby.
+  pie_stores:
+  - id: mpc-fillmore
+    name: Mission Pie Co.
+    address: 2010 Fillmore St
+    neighborhood: Pacific Heights
+    menu:
+    - Classic Pumpkin Pie ($28.00)
+    - Pumpkin Cheesecake Pie ($32.00)
+    - Maple Pecan Pie ($34.00)
+    - Chocolate Pecan Pie ($34.00)
+    - Dutch Apple Pie ($30.00)
+    - Classic Pumpkin Pie Slice ($6.50)
+    - Maple Pecan Pie Slice ($7.00)
+    - Whipped Cream (8 oz) ($5.00)
+  - id: mpc-valencia
+    name: Mission Pie Co.
+    address: 1220 Valencia St
+    neighborhood: Mission
+    menu:
+    - Classic Pumpkin Pie ($28.00)
+    - Pumpkin Cheesecake Pie ($32.00)
+    - Maple Pecan Pie ($34.00)
+    - Chocolate Pecan Pie ($34.00)
+    - Dutch Apple Pie ($30.00)
+    - Classic Pumpkin Pie Slice ($6.50)
+    - Maple Pecan Pie Slice ($7.00)
+    - Whipped Cream (8 oz) ($5.00)
+  - id: mission-pies-pastry
+    name: Mission Pies & Pastry
+    address: 2290 Mission St
+    neighborhood: Mission
+    menu:
+    - Pumpkin Pie ($28.00)
+    - Pumpkin Cheesecake Pie ($32.00)
+    - Pecan Pie ($34.00)
+    - Chocolate Pecan Pie ($34.00)
+    - Dutch Apple Pie ($30.00)
+    - Pumpkin Pie Slice ($6.50)
+    - Pecan Pie Slice ($7.00)
+    - Whipped Cream (8 oz) ($5.00)

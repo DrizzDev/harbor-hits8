@@ -1,0 +1,1 @@
+Happy Thanksgiving! 🦃 Today's errands: the last Bay Market run on Mom's list, a place near us for Uncle Joe and Aunt Rita tonight and tomorrow night, and the pies from Mission Pie Co. Plans keep changing, so check my texts again before you call it done. Text Uncle Joe the place when it's booked.
